@@ -1,9 +1,11 @@
 # FX Review OS — System Index
 
-This file is the **first entry point** for any serious work on the `daily-fx` system.
+This file is the **first entry point** for any serious work on the `weekly-fx` system.
 
 ## Purpose
-This repository contains both the production execution files and a new control layer meant to reduce confusion between analysis logic, state management, and delivery.
+This repository is the **non-production lab clone** of `daily-fx`.
+
+It contains the mirrored FX production execution files plus a growing lab layer used to test tooling, diagnostics, and workflow improvements **without changing the original production repo first**.
 
 Use this file first so you do not start in the wrong place.
 
@@ -21,8 +23,14 @@ Read these after the control files and only when relevant to the task.
 - `output/fx_technical_overlay.json` — technical confirmation overlay input.
 - `daily_outputs/latest/` and `mt5_output/latest/` — current supporting artifacts.
 
+### Lab-specific execution files
+These files exist only in the lab repo unless explicitly promoted later:
+- `tools/generate_quantstats_diagnostics.py`
+- `.github/workflows/lab-quantstats-diagnostics.yml`
+- `docs/QUANTSTATS_LAB_DIAGNOSTICS.md`
+
 ## Canonical control files
-These are the new control-layer files for future sessions.
+These are the control-layer files for recurring sessions.
 
 - `control/CURRENT_STATE.md`
 - `control/NEXT_ACTIONS.md`
@@ -66,7 +74,7 @@ This defines how the system is actually run.
 Today the prompt still carries too much runbook logic. Over time, the scripts and workflow should own more of the true execution layer.
 
 ## Session start rule
-For architecture work, debugging, prompt changes, or flow redesign, start in this order:
+For architecture work, debugging, prompt changes, workflow changes, tool integration, or flow redesign, start in this order:
 
 1. `control/SYSTEM_INDEX.md`
 2. `control/CURRENT_STATE.md`
@@ -78,6 +86,7 @@ Recommended execution file priority by task:
 - delivery / email / PDF / manifest → `send_fxreport.py`
 - workflow / secrets / scheduling → `.github/workflows/send-weekly-report.yml`
 - implementation-state disputes → the relevant file in `output/`
+- lab analytics / QA → `tools/generate_quantstats_diagnostics.py` and `.github/workflows/lab-quantstats-diagnostics.yml`
 
 ## Session close rule
 At the end of any meaningful architecture or implementation session:
@@ -91,11 +100,15 @@ At the end of any meaningful architecture or implementation session:
 - Do not let technical overlay evidence become the only decision engine.
 - Do not claim delivery succeeded without a real receipt or manifest.
 - Do not treat stale overlay files as if they were fresh without labeling them.
+- Do not assume lab-only tools are production-approved.
+- Do not let lab workflows send client-facing output unless explicitly validated and promoted.
 
 ## Current direction of travel
-The target architecture for FX is:
+The target architecture for weekly-fx is:
 
 - **ChatGPT Project** as working memory and recurring workspace
 - **GitHub** as explicit state, audit trail, and operational source of truth
 - **GitHub Actions + scripts** as execution and delivery layer
+- **weekly-fx** as the safe experimentation surface for tooling and QA improvements
+- **daily-fx** as the protected production repo until lab changes are validated and intentionally promoted
 - **Optional Custom GPT** only as architect/reviewer, not as the production runner
