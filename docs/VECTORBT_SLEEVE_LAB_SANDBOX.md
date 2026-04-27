@@ -49,16 +49,28 @@ Artifacts are generated into:
 The workflow currently produces:
 - `fx_sleeve_price_history.csv`
 - `fx_sleeve_vectorbt_strategy_grid.csv`
-- `fx_sleeve_vectorbt_best_by_sleeve.csv`
+- `fx_sleeve_vectorbt_best_active_by_sleeve.csv`
+- `fx_sleeve_vectorbt_best_inactive_by_sleeve.csv`
 - `fx_sleeve_vectorbt_summary.json`
 - `fx_sleeve_vectorbt_summary.md`
-- `fx_sleeve_vectorbt_best_equity_curves.csv`
+- `fx_sleeve_vectorbt_best_active_equity_curves.csv`
 - `fx_sleeve_vectorbt_manifest.json`
+
+## Activity filter
+
+The sandbox now separates **active winners** from **inactive / no-trade winners**.
+
+Current thresholds:
+- minimum entry signals for an active candidate: **1**
+- minimum exposure for an active candidate: **15%** of daily bars
+
+Rules below the threshold are still kept in the output, but they are ranked separately.
 
 ## Interpretation rules
 
 - Treat this as **sleeve-level exploration**, not as automatic production allocation advice.
-- A sleeve whose top rule looks good over a short window may still be pure noise.
+- A sleeve whose top active rule looks good over a short window may still be pure noise.
+- A flat defensive rule may still be useful, but it is not the same as an active improving rule.
 - Compare these results against the existing technical overlay, not instead of it.
 - This layer is for QA, exploration, and hypothesis generation only.
 
