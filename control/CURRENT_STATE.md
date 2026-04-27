@@ -11,7 +11,7 @@ It contains:
 - the mirrored FX production prompt and workflow files from `daily-fx`
 - the existing archived outputs and explicit state artifacts in `output/`
 - the same technical overlay and mark-to-market portfolio engine concept used by production
-- a new **lab-only analytics layer** for non-destructive QA and tool evaluation
+- a growing **lab-only analytics and rule-testing layer** for non-destructive QA and tool evaluation
 
 ## Current strengths
 
@@ -23,6 +23,7 @@ It contains:
 - Strong fail-loud delivery discipline.
 - A safe lab surface now exists for testing tooling without changing `daily-fx` first.
 - A first lab-only QuantStats diagnostics layer now exists for portfolio QA.
+- A first lab-only vectorbt rule sandbox now exists for portfolio-level overlay exploration.
 
 ## Current weaknesses
 
@@ -65,7 +66,7 @@ The repo side can now be structured, but the actual recurring ChatGPT workspace 
 ### Delivery side
 - Delivery remains in `send_fxreport.py` plus GitHub Actions.
 - The prompt keeps decision standards and output requirements, but should gradually stop being the only runbook.
-- Lab analytics must remain separate from production email delivery until explicitly validated.
+- Lab analytics and sandbox layers must remain separate from production email delivery until explicitly validated.
 
 ## Immediate priorities
 
@@ -81,13 +82,20 @@ Completed in this step:
 - add a manual GitHub Actions workflow that generates diagnostics artifacts only
 - keep diagnostics separate from the client-facing report and email flow
 
-### Priority C — compare diagnostics against existing Section 7 / state outputs
-Planned next:
-- validate whether QuantStats metrics align cleanly with `fx_valuation_history.csv`
-- decide which outputs are useful for internal QA only
-- avoid leaking lab-only diagnostics into production presentation before validation
+### Priority C — validate the new vectorbt sandbox layer
+Completed in this step:
+- add a standalone vectorbt rule sandbox script
+- add a manual GitHub Actions workflow that generates sandbox artifacts only
+- keep the sandbox separate from production strategy and delivery logic
 
-### Priority D — make the FX layer boundaries more explicit
+### Priority D — compare lab outputs against current state and report behavior
+Planned next:
+- compare QuantStats diagnostics against Section 7 / `fx_valuation_history.csv`
+- inspect the vectorbt sandbox results for signal quality, overfitting risk, and practical relevance
+- decide which outputs are useful for internal QA only
+- avoid leaking lab-only analytics into production presentation before validation
+
+### Priority E — make the FX layer boundaries more explicit
 Still planned:
 - extract the state/input contract more cleanly from `fx.txt`
 - extract the output contract more cleanly from `fx.txt`
@@ -119,7 +127,8 @@ For any future weekly-fx architecture or integration session:
 - review and improve scripts/workflows
 - strengthen state authority rules
 - add lab-only diagnostics and QA tooling
+- add lab-only rule-testing sandboxes
 
 ## Current status label
 
-**Lab clone established — weekly-fx now mirrors the FX production system and includes a first lab-only QuantStats diagnostics layer, while production remains protected in `daily-fx`.**
+**Lab clone established — weekly-fx now mirrors the FX production system and includes both a lab-only QuantStats diagnostics layer and a lab-only vectorbt rule sandbox, while production remains protected in `daily-fx`.**
