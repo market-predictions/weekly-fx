@@ -28,6 +28,9 @@ These files exist only in the lab repo unless explicitly promoted later:
 - `tools/generate_quantstats_diagnostics.py`
 - `.github/workflows/lab-quantstats-diagnostics.yml`
 - `docs/QUANTSTATS_LAB_DIAGNOSTICS.md`
+- `tools/generate_vectorbt_rule_sandbox.py`
+- `.github/workflows/lab-vectorbt-rule-sandbox.yml`
+- `docs/VECTORBT_LAB_RULE_SANDBOX.md`
 
 ## Canonical control files
 These are the control-layer files for recurring sessions.
@@ -87,6 +90,7 @@ Recommended execution file priority by task:
 - workflow / secrets / scheduling → `.github/workflows/send-weekly-report.yml`
 - implementation-state disputes → the relevant file in `output/`
 - lab analytics / QA → `tools/generate_quantstats_diagnostics.py` and `.github/workflows/lab-quantstats-diagnostics.yml`
+- lab rule-testing / overlay sandbox → `tools/generate_vectorbt_rule_sandbox.py` and `.github/workflows/lab-vectorbt-rule-sandbox.yml`
 
 ## Session close rule
 At the end of any meaningful architecture or implementation session:
@@ -102,6 +106,7 @@ At the end of any meaningful architecture or implementation session:
 - Do not treat stale overlay files as if they were fresh without labeling them.
 - Do not assume lab-only tools are production-approved.
 - Do not let lab workflows send client-facing output unless explicitly validated and promoted.
+- Do not treat proxy backtests on the portfolio NAV path as automatic production recommendations.
 
 ## Current direction of travel
 The target architecture for weekly-fx is:
