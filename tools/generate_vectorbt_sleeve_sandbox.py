@@ -34,6 +34,8 @@ from fx_technical_overlay import PAIR_MAP, fetch_series
 FAST_WINDOWS = [3, 5, 7]
 SLOW_WINDOWS = [10, 15, 21]
 DD_LIMITS_PCT = [0.50, 0.75]
+MIN_ACTIVE_ENTRY_SIGNALS = 1
+MIN_ACTIVE_EXPOSURE_PCT = 15.0
 
 SLEEVE_MAP = {
     "EUR": {"pair": "EURUSD", "symbol": PAIR_MAP["EURUSD"], "invert": False},
@@ -53,13 +55,17 @@ class SleeveSandboxSummary:
     generated_at_utc: str
     sleeve_count: int
     total_strategy_rows: int
-    best_overall_sleeve: str
-    best_overall_strategy: str
-    best_overall_total_return_pct: float
-    best_overall_max_drawdown_pct: float
-    worst_overall_sleeve: str
-    worst_overall_strategy: str
-    worst_overall_total_return_pct: float
+    active_candidate_rows: int
+    inactive_candidate_rows: int
+    best_active_overall_sleeve: str
+    best_active_overall_strategy: str
+    best_active_overall_total_return_pct: float
+    best_active_overall_max_drawdown_pct: float
+    best_inactive_overall_sleeve: str
+    best_inactive_overall_strategy: str
+    best_inactive_overall_total_return_pct: float
+    activity_threshold_entry_signals: int
+    activity_threshold_exposure_pct: float
     note: str
 
 
@@ -139,6 +145,34 @@ def entry_count_from_signals(entries: pd.Series) -> int:
     return int(transitions.sum())
 
 
+def position_state_from_signals(entries: pd.Series, exits: pd.Series) -> pd.Series:
+    entries = entries.fillna(False).astype(bool)
+    exits = exits.fillna(False).astype(bool)
+    active = False
+    states: list[bool] = []
+    for idx in entries.index:
+        if active and bool(exits.loc[idx]):
+            active = False
+        if (not active) and bool(entries.loc[idx]):
+            active = True
+        states.append(active)
+    return pd.Series(states, index=entries.index, name="in_position")
+
+
+def exposure_stats(position_state: pd.Series) -> tuple[float, int, int]:
+    daily_state = position_state.groupby(position_state.index.floor("D")).max().astype(bool)
+    total_days = int(len(daily_state))
+    invested_days = int(daily_state.sum())
+    exposure_pct = safe_float((invested_days / total_days) * 100.0 if total_days > 0 else 0.0)
+    return exposure_pct, invested_days, total_days
+
+
+def quality_flag(entry_signal_count: int, exposure_pct: float) -> str:
+    if entry_signal_count >= MIN_ACTIVE_ENTRY_SIGNALS and exposure_pct >= MIN_ACTIVE_EXPOSURE_PCT:
+        return "active_candidate"
+    return "inactive_or_no_trade"
+
+
 def fetch_sleeve_close(symbol: str, invert: bool, outputsize: int) -> pd.Series:
     rows = fetch_series(symbol, "1day", outputsize=outputsize)
     df = pd.DataFrame(rows)
@@ -163,6 +197,7 @@ def metrics_from_portfolio(
     params: dict[str, Any],
     pf: Any,
     entries: pd.Series,
+    exits: pd.Series,
 ) -> tuple[dict[str, Any], pd.Series]:
     value = pd.Series(pf.value(), copy=False)
     value.name = name
@@ -174,6 +209,9 @@ def metrics_from_portfolio(
     sharpe = annualized_sharpe(daily_returns)
     sortino = annualized_sortino(daily_returns)
     cagr = cagr_pct(safe_float(daily_value.iloc[0]), safe_float(daily_value.iloc[-1]), daily_value.index[0], daily_value.index[-1])
+    signal_count = entry_count_from_signals(entries)
+    exposure_pct, invested_days, total_days = exposure_stats(position_state_from_signals(entries, exits))
+    flag = quality_flag(signal_count, exposure_pct)
 
     row = {
         "sleeve": sleeve,
@@ -194,7 +232,11 @@ def metrics_from_portfolio(
         "best_day_pct": safe_float(daily_returns.max() * 100.0 if not daily_returns.empty else 0.0),
         "worst_day_pct": safe_float(daily_returns.min() * 100.0 if not daily_returns.empty else 0.0),
         "last_daily_return_pct": safe_float(daily_returns.iloc[-1] * 100.0 if not daily_returns.empty else 0.0),
-        "entry_signal_count": entry_count_from_signals(entries),
+        "entry_signal_count": signal_count,
+        "exposure_pct": exposure_pct,
+        "invested_days": invested_days,
+        "total_days": total_days,
+        "rule_quality_flag": flag,
     }
     return row, daily_value
 
@@ -222,6 +264,7 @@ def build_sleeve_strategy_rows(
         {},
         baseline_pf,
         baseline_entries,
+        baseline_exits,
     )
     rows.append(baseline_row)
     curves[baseline_name] = baseline_curve
@@ -249,6 +292,7 @@ def build_sleeve_strategy_rows(
                 {"fast_window": fast, "slow_window": slow},
                 trend_pf,
                 trend_entries,
+                trend_exits,
             )
             rows.append(trend_row)
             curves[trend_name] = trend_curve
@@ -268,6 +312,7 @@ def build_sleeve_strategy_rows(
                     {"fast_window": fast, "slow_window": slow, "dd_limit_pct": dd_limit},
                     combo_pf,
                     combo_entries,
+                    combo_exits,
                 )
                 rows.append(combo_row)
                 curves[combo_name] = combo_curve
@@ -283,7 +328,37 @@ def normalize_date_index_frame(frame: pd.DataFrame) -> pd.DataFrame:
     return normalized
 
 
-def write_markdown_summary(path: Path, summary: SleeveSandboxSummary, best_df: pd.DataFrame) -> None:
+def add_baseline_deltas(grid_df: pd.DataFrame) -> pd.DataFrame:
+    baseline = (
+        grid_df.loc[grid_df["family"] == "baseline", ["sleeve", "total_return_pct", "max_drawdown_pct"]]
+        .rename(columns={
+            "total_return_pct": "baseline_total_return_pct",
+            "max_drawdown_pct": "baseline_max_drawdown_pct",
+        })
+        .copy()
+    )
+    merged = grid_df.merge(baseline, on="sleeve", how="left")
+    merged["baseline_return_delta_pct"] = merged["total_return_pct"] - merged["baseline_total_return_pct"]
+    merged["baseline_drawdown_delta_pct"] = merged["max_drawdown_pct"] - merged["baseline_max_drawdown_pct"]
+    return merged
+
+
+def best_by_sleeve(df: pd.DataFrame) -> pd.DataFrame:
+    if df.empty:
+        return pd.DataFrame(columns=[])
+    ranked = df.sort_values(
+        ["sleeve", "total_return_pct", "sharpe", "sortino", "baseline_return_delta_pct"],
+        ascending=[True, False, False, False, False],
+    ).reset_index(drop=True)
+    return ranked.groupby("sleeve", as_index=False).first().reset_index(drop=True)
+
+
+def write_markdown_summary(
+    path: Path,
+    summary: SleeveSandboxSummary,
+    active_best_df: pd.DataFrame,
+    inactive_best_df: pd.DataFrame,
+) -> None:
     lines = [
         "# Weekly FX sleeve-level vectorbt sandbox summary",
         "",
@@ -292,31 +367,53 @@ def write_markdown_summary(path: Path, summary: SleeveSandboxSummary, best_df: p
         "This is a lab-only sleeve-level sandbox that tests simple vectorbt rules on underlying FX sleeve price paths.",
         "It does not replace production methodology or delivery logic.",
         "",
+        "## Activity filter",
+        "",
+        f"- Minimum entry signals for an active candidate: **{summary.activity_threshold_entry_signals}**",
+        f"- Minimum exposure for an active candidate: **{summary.activity_threshold_exposure_pct:.1f}%**",
+        "- Rules below the threshold are kept visible, but they are ranked separately as inactive / no-trade outcomes.",
+        "",
         "## Headline result",
         "",
-        f"- Best overall sleeve: **{summary.best_overall_sleeve}**",
-        f"- Best overall strategy: **{summary.best_overall_strategy}**",
-        f"- Best overall total return (%): **{summary.best_overall_total_return_pct:.4f}**",
-        f"- Best overall max drawdown (%): **{summary.best_overall_max_drawdown_pct:.4f}**",
-        f"- Weakest sleeve by best-rule result: **{summary.worst_overall_sleeve}**",
-        f"- Weakest sleeve best strategy: **{summary.worst_overall_strategy}**",
-        f"- Weakest sleeve best-rule total return (%): **{summary.worst_overall_total_return_pct:.4f}**",
+        f"- Best active overall sleeve: **{summary.best_active_overall_sleeve}**",
+        f"- Best active overall strategy: **{summary.best_active_overall_strategy}**",
+        f"- Best active overall total return (%): **{summary.best_active_overall_total_return_pct:.4f}**",
+        f"- Best active overall max drawdown (%): **{summary.best_active_overall_max_drawdown_pct:.4f}**",
+        f"- Best inactive overall sleeve: **{summary.best_inactive_overall_sleeve}**",
+        f"- Best inactive overall strategy: **{summary.best_inactive_overall_strategy}**",
+        f"- Best inactive overall total return (%): **{summary.best_inactive_overall_total_return_pct:.4f}**",
         "",
-        "## Best rule per sleeve",
+        "## Best active rule per sleeve",
         "",
-        "| Sleeve | Overlay status | Strategy | Family | Total return (%) | Max drawdown (%) | Sharpe | Sortino |",
-        "|---|---|---|---|---:|---:|---:|---:|",
+        "| Sleeve | Overlay status | Strategy | Family | Total return (%) | Baseline delta (%) | Max drawdown (%) | Exposure (%) | Entries |",
+        "|---|---|---|---|---:|---:|---:|---:|---:|",
     ]
-    for _, row in best_df.iterrows():
+    for _, row in active_best_df.iterrows():
         lines.append(
-            f"| {row['sleeve']} | {row['overlay_status']} | {row['strategy']} | {row['family']} | {row['total_return_pct']:.4f} | {row['max_drawdown_pct']:.4f} | {row['sharpe']:.4f} | {row['sortino']:.4f} |"
+            f"| {row['sleeve']} | {row['overlay_status']} | {row['strategy']} | {row['family']} | {row['total_return_pct']:.4f} | {row['baseline_return_delta_pct']:.4f} | {row['max_drawdown_pct']:.4f} | {row['exposure_pct']:.2f} | {int(row['entry_signal_count'])} |"
         )
+
+    lines.extend([
+        "",
+        "## Best inactive / no-trade rule per sleeve",
+        "",
+        "| Sleeve | Overlay status | Strategy | Total return (%) | Exposure (%) | Entries | Quality flag |",
+        "|---|---|---|---:|---:|---:|---|",
+    ])
+    if inactive_best_df.empty:
+        lines.append("| - | - | No inactive / no-trade candidates | - | - | - | - |")
+    else:
+        for _, row in inactive_best_df.iterrows():
+            lines.append(
+                f"| {row['sleeve']} | {row['overlay_status']} | {row['strategy']} | {row['total_return_pct']:.4f} | {row['exposure_pct']:.2f} | {int(row['entry_signal_count'])} | {row['rule_quality_flag']} |"
+            )
+
     lines.extend([
         "",
         "## Interpretation rules",
         "",
-        "- Treat this as sleeve-level exploration, not as automatic production allocation advice.",
-        "- A sleeve whose top rule looks good over a short window may still be pure noise.",
+        "- Treat active winners and inactive / no-trade outcomes as different categories.",
+        "- A flat defensive rule may still be useful, but it is not the same as an active improving rule.",
         "- Compare these results against the existing technical overlay, not instead of it.",
         "",
         "## Note",
@@ -358,32 +455,47 @@ def main() -> None:
         all_rows.extend(sleeve_rows)
         all_curves.update(sleeve_curves)
 
-    grid_df = pd.DataFrame(all_rows).sort_values(["sleeve", "total_return_pct", "sharpe", "sortino"], ascending=[True, False, False, False]).reset_index(drop=True)
-    best_by_sleeve = grid_df.groupby("sleeve", as_index=False).first().sort_values("total_return_pct", ascending=False).reset_index(drop=True)
+    grid_df = pd.DataFrame(all_rows)
+    grid_df = add_baseline_deltas(grid_df)
+    grid_df = grid_df.sort_values(
+        ["sleeve", "total_return_pct", "sharpe", "sortino", "baseline_return_delta_pct"],
+        ascending=[True, False, False, False, False],
+    ).reset_index(drop=True)
 
-    best_overall = best_by_sleeve.iloc[0]
-    worst_overall = best_by_sleeve.iloc[-1]
+    active_df = grid_df.loc[grid_df["rule_quality_flag"] == "active_candidate"].copy()
+    inactive_df = grid_df.loc[grid_df["rule_quality_flag"] == "inactive_or_no_trade"].copy()
+
+    active_best_by_sleeve = best_by_sleeve(active_df).sort_values("total_return_pct", ascending=False).reset_index(drop=True)
+    inactive_best_by_sleeve = best_by_sleeve(inactive_df).sort_values("total_return_pct", ascending=False).reset_index(drop=True)
+
+    best_active = active_best_by_sleeve.iloc[0] if not active_best_by_sleeve.empty else None
+    best_inactive = inactive_best_by_sleeve.iloc[0] if not inactive_best_by_sleeve.empty else None
 
     summary = SleeveSandboxSummary(
         generated_at_utc=datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         sleeve_count=int(len(SLEEVE_MAP)),
         total_strategy_rows=int(len(grid_df)),
-        best_overall_sleeve=str(best_overall["sleeve"]),
-        best_overall_strategy=str(best_overall["strategy"]),
-        best_overall_total_return_pct=safe_float(best_overall["total_return_pct"]),
-        best_overall_max_drawdown_pct=safe_float(best_overall["max_drawdown_pct"]),
-        worst_overall_sleeve=str(worst_overall["sleeve"]),
-        worst_overall_strategy=str(worst_overall["strategy"]),
-        worst_overall_total_return_pct=safe_float(worst_overall["total_return_pct"]),
-        note="This sleeve-level sandbox uses underlying FX pair histories transformed into sleeve-aligned price paths. It is a research layer only and must be checked for short-history noise before any promotion.",
+        active_candidate_rows=int(len(active_df)),
+        inactive_candidate_rows=int(len(inactive_df)),
+        best_active_overall_sleeve=str(best_active["sleeve"]) if best_active is not None else "none",
+        best_active_overall_strategy=str(best_active["strategy"]) if best_active is not None else "none",
+        best_active_overall_total_return_pct=safe_float(best_active["total_return_pct"]) if best_active is not None else 0.0,
+        best_active_overall_max_drawdown_pct=safe_float(best_active["max_drawdown_pct"]) if best_active is not None else 0.0,
+        best_inactive_overall_sleeve=str(best_inactive["sleeve"]) if best_inactive is not None else "none",
+        best_inactive_overall_strategy=str(best_inactive["strategy"]) if best_inactive is not None else "none",
+        best_inactive_overall_total_return_pct=safe_float(best_inactive["total_return_pct"]) if best_inactive is not None else 0.0,
+        activity_threshold_entry_signals=MIN_ACTIVE_ENTRY_SIGNALS,
+        activity_threshold_exposure_pct=MIN_ACTIVE_EXPOSURE_PCT,
+        note="This sleeve-level sandbox uses underlying FX pair histories transformed into sleeve-aligned price paths. Active winners and inactive / no-trade outcomes are now separated so flat defensive rules do not masquerade as active improvements.",
     )
 
     prices_export = artifact_dir / "fx_sleeve_price_history.csv"
     grid_export = artifact_dir / "fx_sleeve_vectorbt_strategy_grid.csv"
-    best_export = artifact_dir / "fx_sleeve_vectorbt_best_by_sleeve.csv"
+    active_best_export = artifact_dir / "fx_sleeve_vectorbt_best_active_by_sleeve.csv"
+    inactive_best_export = artifact_dir / "fx_sleeve_vectorbt_best_inactive_by_sleeve.csv"
     summary_export = artifact_dir / "fx_sleeve_vectorbt_summary.json"
     summary_md_export = artifact_dir / "fx_sleeve_vectorbt_summary.md"
-    curves_export = artifact_dir / "fx_sleeve_vectorbt_best_equity_curves.csv"
+    curves_export = artifact_dir / "fx_sleeve_vectorbt_best_active_equity_curves.csv"
     manifest_export = artifact_dir / "fx_sleeve_vectorbt_manifest.json"
 
     price_df = pd.concat(price_frame.values(), axis=1)
@@ -392,14 +504,18 @@ def main() -> None:
     price_df.to_csv(prices_export, index=False)
 
     grid_df.to_csv(grid_export, index=False)
-    best_by_sleeve.to_csv(best_export, index=False)
+    active_best_by_sleeve.to_csv(active_best_export, index=False)
+    inactive_best_by_sleeve.to_csv(inactive_best_export, index=False)
     summary_export.write_text(json.dumps(asdict(summary), indent=2) + "\n", encoding="utf-8")
-    write_markdown_summary(summary_md_export, summary, best_by_sleeve)
+    write_markdown_summary(summary_md_export, summary, active_best_by_sleeve, inactive_best_by_sleeve)
 
-    best_curve_names = best_by_sleeve["strategy"].tolist()
-    curve_df = pd.concat([all_curves[name].rename(name) for name in best_curve_names], axis=1)
-    curve_df = normalize_date_index_frame(curve_df)
-    curve_df.to_csv(curves_export, index=False)
+    if not active_best_by_sleeve.empty:
+        best_curve_names = active_best_by_sleeve["strategy"].tolist()
+        curve_df = pd.concat([all_curves[name].rename(name) for name in best_curve_names], axis=1)
+        curve_df = normalize_date_index_frame(curve_df)
+        curve_df.to_csv(curves_export, index=False)
+    else:
+        pd.DataFrame(columns=["date"]).to_csv(curves_export, index=False)
 
     write_manifest(
         manifest_export,
@@ -413,23 +529,33 @@ def main() -> None:
                 "slow_windows": SLOW_WINDOWS,
                 "drawdown_limits_pct": DD_LIMITS_PCT,
             },
+            "activity_filter": {
+                "min_entry_signals": MIN_ACTIVE_ENTRY_SIGNALS,
+                "min_exposure_pct": MIN_ACTIVE_EXPOSURE_PCT,
+            },
             "artifact_files": {
                 "price_history_csv": str(prices_export),
                 "strategy_grid_csv": str(grid_export),
-                "best_by_sleeve_csv": str(best_export),
+                "best_active_by_sleeve_csv": str(active_best_export),
+                "best_inactive_by_sleeve_csv": str(inactive_best_export),
                 "summary_json": str(summary_export),
                 "summary_markdown": str(summary_md_export),
-                "best_equity_curves_csv": str(curves_export),
+                "best_active_equity_curves_csv": str(curves_export),
             },
-            "best_overall_sleeve": summary.best_overall_sleeve,
-            "best_overall_strategy": summary.best_overall_strategy,
+            "best_active_overall_sleeve": summary.best_active_overall_sleeve,
+            "best_active_overall_strategy": summary.best_active_overall_strategy,
+            "best_inactive_overall_sleeve": summary.best_inactive_overall_sleeve,
+            "best_inactive_overall_strategy": summary.best_inactive_overall_strategy,
             "total_strategy_rows": summary.total_strategy_rows,
+            "active_candidate_rows": summary.active_candidate_rows,
+            "inactive_candidate_rows": summary.inactive_candidate_rows,
         },
     )
 
     print(f"Sleeve-level vectorbt sandbox artifacts written to: {artifact_dir}")
     print(f"Price history CSV: {prices_export}")
-    print(f"Best-by-sleeve CSV: {best_export}")
+    print(f"Best active-by-sleeve CSV: {active_best_export}")
+    print(f"Best inactive-by-sleeve CSV: {inactive_best_export}")
     print(f"Summary Markdown: {summary_md_export}")
 
 
