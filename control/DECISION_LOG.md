@@ -58,3 +58,25 @@ QuantStats offers a fast way to generate portfolio tear sheets and diagnostic an
 - it does not send client email
 - it is intended first for QA and internal comparison against `fx_valuation_history.csv`
 - only after validation should any insight from this layer be considered for production promotion
+
+---
+
+## 2026-04-27 — second lab analytics integration: manual vectorbt rule sandbox
+
+### Decision
+The next lab-only tooling integration in `weekly-fx` is a **manual vectorbt rule sandbox**.
+
+It consists of:
+- `tools/generate_vectorbt_rule_sandbox.py`
+- `.github/workflows/lab-vectorbt-rule-sandbox.yml`
+- `docs/VECTORBT_LAB_RULE_SANDBOX.md`
+
+### Why
+vectorbt is designed for fast, vectorized strategy research and portfolio backtesting on pandas/NumPy objects, and its current documentation and package metadata position it as a modern backtesting stack for rapid experimentation on Python 3.10+ environments. The right use here is not to replace the FX methodology, but to create a safe sandbox for testing whether simple portfolio-level trend and drawdown overlays would have materially changed the tracked model-portfolio path. ([vectorbt.dev](https://vectorbt.dev/?utm_source=chatgpt.com), [pypi.org](https://pypi.org/project/vectorbt/?utm_source=chatgpt.com))
+
+### Consequence
+- the vectorbt workflow is manual and artifact-only
+- it does not send client email
+- it does not replace the production FX decision framework
+- it treats the tracked portfolio NAV path as a **research proxy**, not as a tradable production signal source
+- any apparent outperformance must be treated first as a hypothesis and checked for short-history noise or overfitting before any production promotion
