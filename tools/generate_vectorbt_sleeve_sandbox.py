@@ -275,6 +275,14 @@ def build_sleeve_strategy_rows(
     return rows, curves
 
 
+def normalize_date_index_frame(frame: pd.DataFrame) -> pd.DataFrame:
+    normalized = frame.groupby(frame.index.floor("D")).last().reset_index()
+    first_col = normalized.columns[0]
+    normalized = normalized.rename(columns={first_col: "date"})
+    normalized["date"] = pd.to_datetime(normalized["date"]).dt.strftime("%Y-%m-%d")
+    return normalized
+
+
 def write_markdown_summary(path: Path, summary: SleeveSandboxSummary, best_df: pd.DataFrame) -> None:
     lines = [
         "# Weekly FX sleeve-level vectorbt sandbox summary",
@@ -380,8 +388,7 @@ def main() -> None:
 
     price_df = pd.concat(price_frame.values(), axis=1)
     price_df.columns = list(price_frame.keys())
-    price_df = price_df.groupby(price_df.index.floor("D")).last().reset_index().rename(columns={"index": "date"})
-    price_df["date"] = pd.to_datetime(price_df["date"]).dt.strftime("%Y-%m-%d")
+    price_df = normalize_date_index_frame(price_df)
     price_df.to_csv(prices_export, index=False)
 
     grid_df.to_csv(grid_export, index=False)
@@ -391,8 +398,7 @@ def main() -> None:
 
     best_curve_names = best_by_sleeve["strategy"].tolist()
     curve_df = pd.concat([all_curves[name].rename(name) for name in best_curve_names], axis=1)
-    curve_df = curve_df.groupby(curve_df.index.floor("D")).last().reset_index().rename(columns={"index": "date"})
-    curve_df["date"] = pd.to_datetime(curve_df["date"]).dt.strftime("%Y-%m-%d")
+    curve_df = normalize_date_index_frame(curve_df)
     curve_df.to_csv(curves_export, index=False)
 
     write_manifest(
