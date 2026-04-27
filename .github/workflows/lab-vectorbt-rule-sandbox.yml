@@ -1,0 +1,35 @@
+name: Lab vectorbt rule sandbox
+
+on:
+  workflow_dispatch:
+
+jobs:
+  vectorbt-rule-sandbox:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Python dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pandas vectorbt
+
+      - name: Generate vectorbt sandbox artifacts
+        run: |
+          python tools/generate_vectorbt_rule_sandbox.py \
+            --output-dir output \
+            --artifact-dir lab_outputs/vectorbt
+
+      - name: Upload vectorbt artifact bundle
+        uses: actions/upload-artifact@v4
+        with:
+          name: weekly-fx-vectorbt-sandbox
+          path: lab_outputs/vectorbt
+          if-no-files-found: error
