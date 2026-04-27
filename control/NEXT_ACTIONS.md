@@ -127,13 +127,22 @@
   - compare delivery-readiness
 - Done when: the split architecture is validated as truly “as-is” in practical output quality, not just in wording.
 
-### 9A. Run the new QuantStats diagnostics workflow
+### 9A. Run the QuantStats diagnostics workflow
 - Owner: `[JOINT]`
 - Action:
   - use `.github/workflows/lab-quantstats-diagnostics.yml` manually
   - inspect the generated artifact bundle from `lab_outputs/quantstats/`
   - compare the diagnostics to Section 7 and to `output/fx_valuation_history.csv`
 - Done when: the lab diagnostics layer is validated as a useful QA aid.
+
+### 9B. Run the vectorbt rule sandbox workflow
+- Owner: `[JOINT]`
+- Action:
+  - use `.github/workflows/lab-vectorbt-rule-sandbox.yml` manually
+  - inspect the generated artifact bundle from `lab_outputs/vectorbt/`
+  - compare the top sandbox rules against baseline hold
+  - assess whether any result is likely just short-history noise rather than a durable signal
+- Done when: the vectorbt sandbox is validated as a useful exploration layer rather than a premature production rule source.
 
 ---
 
@@ -179,12 +188,12 @@
 The best next move after this update is:
 1. keep the ChatGPT Project lean with `control/PROJECT_BOOTSTRAP.md` as the default upload
 2. set lab-safe GitHub secrets/variables in `weekly-fx`
-3. run the manual QuantStats diagnostics workflow once
-4. compare the diagnostics bundle against the current Section 7 numbers
-5. only after that, decide whether the next lab integration should be `vectorbt` or a stronger risk / optimization layer
+3. run the manual vectorbt sandbox workflow once
+4. inspect whether the top sandbox rules add real insight or only short-history noise
+5. only after that, decide whether the next lab integration should deepen FX pair-level research or move to ETF / Index optimization work
 
 ---
 
 ## Current checkpoint
 
-**Lab clone established — split runtime still exists, production prompt remains protected, repo-native prep trigger fallback remains defined, and weekly-fx now includes a first manual QuantStats diagnostics layer for lab-only QA.**
+**Lab clone established — split runtime still exists, production prompt remains protected, repo-native prep trigger fallback remains defined, and weekly-fx now includes both a lab-only QuantStats diagnostics layer and a lab-only vectorbt rule sandbox.**
