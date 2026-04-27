@@ -31,6 +31,9 @@ These files exist only in the lab repo unless explicitly promoted later:
 - `tools/generate_vectorbt_rule_sandbox.py`
 - `.github/workflows/lab-vectorbt-rule-sandbox.yml`
 - `docs/VECTORBT_LAB_RULE_SANDBOX.md`
+- `tools/generate_vectorbt_sleeve_sandbox.py`
+- `.github/workflows/lab-vectorbt-sleeve-sandbox.yml`
+- `docs/VECTORBT_SLEEVE_LAB_SANDBOX.md`
 
 ## Canonical control files
 These are the control-layer files for recurring sessions.
@@ -90,7 +93,8 @@ Recommended execution file priority by task:
 - workflow / secrets / scheduling → `.github/workflows/send-weekly-report.yml`
 - implementation-state disputes → the relevant file in `output/`
 - lab analytics / QA → `tools/generate_quantstats_diagnostics.py` and `.github/workflows/lab-quantstats-diagnostics.yml`
-- lab rule-testing / overlay sandbox → `tools/generate_vectorbt_rule_sandbox.py` and `.github/workflows/lab-vectorbt-rule-sandbox.yml`
+- lab rule-testing / portfolio overlay sandbox → `tools/generate_vectorbt_rule_sandbox.py` and `.github/workflows/lab-vectorbt-rule-sandbox.yml`
+- lab rule-testing / sleeve-level sandbox → `tools/generate_vectorbt_sleeve_sandbox.py` and `.github/workflows/lab-vectorbt-sleeve-sandbox.yml`
 
 ## Session close rule
 At the end of any meaningful architecture or implementation session:
@@ -107,6 +111,7 @@ At the end of any meaningful architecture or implementation session:
 - Do not assume lab-only tools are production-approved.
 - Do not let lab workflows send client-facing output unless explicitly validated and promoted.
 - Do not treat proxy backtests on the portfolio NAV path as automatic production recommendations.
+- Do not treat sleeve-level sandbox winners as automatic production rules without validation.
 
 ## Current direction of travel
 The target architecture for weekly-fx is:
