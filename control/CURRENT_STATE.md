@@ -1,16 +1,17 @@
 # FX Review OS — Current State
 
 ## Snapshot date
-2026-03-28
+2026-04-27
 
 ## What this repository currently is
 
-This repository is already a production-style weekly FX review system with:
-- a strong FX masterprompt in `fx.txt`
-- a delivery/rendering script in `send_fxreport.py`
-- a GitHub Actions workflow for execution and email delivery
-- archived outputs and explicit state artifacts in `output/`
-- a technical overlay file and a mark-to-market portfolio engine concept embedded in the prompt
+This repository is now the **non-production lab clone** of the original FX production system.
+
+It contains:
+- the mirrored FX production prompt and workflow files from `daily-fx`
+- the existing archived outputs and explicit state artifacts in `output/`
+- the same technical overlay and mark-to-market portfolio engine concept used by production
+- a new **lab-only analytics layer** for non-destructive QA and tool evaluation
 
 ## Current strengths
 
@@ -20,6 +21,8 @@ This repository is already a production-style weekly FX review system with:
 - Explicit technical-overlay contract already exists.
 - Explicit mark-to-market portfolio engine concept already exists.
 - Strong fail-loud delivery discipline.
+- A safe lab surface now exists for testing tooling without changing `daily-fx` first.
+- A first lab-only QuantStats diagnostics layer now exists for portfolio QA.
 
 ## Current weaknesses
 
@@ -33,8 +36,9 @@ Even though FX is more mature than ETF on explicit state, the prompt still mixes
 - workflow orchestration
 - delivery completion logic
 
-### 2. Control layer was previously implicit
-Before this control folder, there was no compact session-start path telling a future session what to read first and which architectural questions were still open.
+### 2. Lab / production boundaries were previously implicit
+Before the clone-and-lab setup, new tooling would have had to compete directly with the production repo.
+The weekly lab repos reduce that risk, but they now need to keep their lab role explicit.
 
 ### 3. Authority rules need to stay visible
 FX already has more explicit state files than ETF, but that only helps if future sessions can quickly see:
@@ -56,42 +60,42 @@ The repo side can now be structured, but the actual recurring ChatGPT workspace 
 - GitHub remains the source of truth for prompt, scripts, workflows, outputs, and control docs.
 - Existing FX state files remain part of the operating core.
 - The control layer reduces restart friction and architecture drift.
+- `weekly-fx` is the first experimentation surface for tool integrations before production promotion.
 
 ### Delivery side
 - Delivery remains in `send_fxreport.py` plus GitHub Actions.
 - The prompt keeps decision standards and output requirements, but should gradually stop being the only runbook.
+- Lab analytics must remain separate from production email delivery until explicitly validated.
 
 ## Immediate priorities
 
-### Priority A — stabilize the operating layer
+### Priority A — keep the lab clone role explicit
 Completed in this step:
-- create a control layer in GitHub
-- create a single entry point file
-- create a current-state file
-- create a next-actions file
-- create a decision log
+- establish `weekly-fx` as the safe experimentation surface
+- preserve the mirrored production files
+- begin documenting lab-only additions explicitly in control files
 
-### Priority B — create the ChatGPT Project manually
-Still required:
-- create the ChatGPT Project in the UI
-- paste project instructions
-- upload `control/PROJECT_BOOTSTRAP.md` as the default stable project context
-- rely on live GitHub reads for changing repo files unless a specific task requires an additional upload
+### Priority B — validate the new QuantStats diagnostics layer
+Completed in this step:
+- add a standalone QuantStats diagnostics script
+- add a manual GitHub Actions workflow that generates diagnostics artifacts only
+- keep diagnostics separate from the client-facing report and email flow
 
-### Priority C — make the FX layer boundaries more explicit
+### Priority C — compare diagnostics against existing Section 7 / state outputs
 Planned next:
+- validate whether QuantStats metrics align cleanly with `fx_valuation_history.csv`
+- decide which outputs are useful for internal QA only
+- avoid leaking lab-only diagnostics into production presentation before validation
+
+### Priority D — make the FX layer boundaries more explicit
+Still planned:
 - extract the state/input contract more cleanly from `fx.txt`
 - extract the output contract more cleanly from `fx.txt`
 - reduce unnecessary runbook logic inside the prompt where scripts are better owners
 
-### Priority D — validate the existing explicit state model
-Planned after project setup:
-- verify that state files, overlay files, and report text are aligned in authority and freshness handling
-- tighten stale-data handling where needed
-
 ## Recommended session start sequence
 
-For any future FX architecture session:
+For any future weekly-fx architecture or integration session:
 1. read `control/SYSTEM_INDEX.md`
 2. read this file
 3. read `control/NEXT_ACTIONS.md`
@@ -103,8 +107,8 @@ For any future FX architecture session:
 - create the ChatGPT Project
 - paste project instructions
 - upload `control/PROJECT_BOOTSTRAP.md` as the default project context
-- optionally add temporary task-specific files only when needed
-- optionally create the helper Custom GPT in the GPT builder
+- set lab-safe GitHub secrets/variables where needed
+- decide when a lab change is ready to be promoted to production
 
 ### Can be done by assistant
 - design the project instructions
@@ -114,7 +118,8 @@ For any future FX architecture session:
 - propose or write repo files
 - review and improve scripts/workflows
 - strengthen state authority rules
+- add lab-only diagnostics and QA tooling
 
 ## Current status label
 
-**Architecture transition in progress — repo state model already relatively mature, GitHub control layer initialized, lean bootstrap-first ChatGPT Project model defined, manual project setup still pending.**
+**Lab clone established — weekly-fx now mirrors the FX production system and includes a first lab-only QuantStats diagnostics layer, while production remains protected in `daily-fx`.**
