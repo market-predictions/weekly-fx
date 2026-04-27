@@ -144,6 +144,16 @@
   - assess whether any result is likely just short-history noise rather than a durable signal
 - Done when: the vectorbt sandbox is validated as a useful exploration layer rather than a premature production rule source.
 
+### 9C. Re-run the sleeve-level vectorbt sandbox with activity separation
+- Owner: `[JOINT]`
+- Action:
+  - use `.github/workflows/lab-vectorbt-sleeve-sandbox.yml` manually
+  - inspect the new artifact bundle from `lab_outputs/vectorbt_sleeves/`
+  - compare `fx_sleeve_vectorbt_best_active_by_sleeve.csv` against `fx_sleeve_vectorbt_best_inactive_by_sleeve.csv`
+  - verify that no-trade / low-exposure rules no longer masquerade as active winners
+  - assess whether CAD / NZD still look interesting after the activity filter
+- Done when: sleeve-level results are interpretable without conflating active improvement and defensive inactivity.
+
 ---
 
 ## Phase 4 — tighten boundaries without changing behavior
@@ -188,12 +198,12 @@
 The best next move after this update is:
 1. keep the ChatGPT Project lean with `control/PROJECT_BOOTSTRAP.md` as the default upload
 2. set lab-safe GitHub secrets/variables in `weekly-fx`
-3. run the manual vectorbt sandbox workflow once
-4. inspect whether the top sandbox rules add real insight or only short-history noise
-5. only after that, decide whether the next lab integration should deepen FX pair-level research or move to ETF / Index optimization work
+3. re-run the manual sleeve-level vectorbt sandbox once
+4. inspect the new active and inactive leaderboards separately
+5. only after that, decide whether any sleeve rule is interesting enough for deeper robustness testing
 
 ---
 
 ## Current checkpoint
 
-**Lab clone established — split runtime still exists, production prompt remains protected, repo-native prep trigger fallback remains defined, and weekly-fx now includes both a lab-only QuantStats diagnostics layer and a lab-only vectorbt rule sandbox.**
+**Lab clone established — split runtime still exists, production prompt remains protected, repo-native prep trigger fallback remains defined, and weekly-fx now includes a QuantStats diagnostics layer, a portfolio-level vectorbt sandbox, and a sleeve-level vectorbt sandbox with active vs inactive separation.**
