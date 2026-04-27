@@ -25,7 +25,8 @@ It then:
 2. computes daily portfolio returns from NAV changes
 3. generates a QuantStats HTML tearsheet
 4. writes a compact summary JSON
-5. uploads all artifacts as a GitHub Actions artifact bundle
+5. writes a human-readable markdown summary
+6. uploads all artifacts as a GitHub Actions artifact bundle
 
 ## Files added
 
@@ -38,6 +39,34 @@ Artifacts are generated into:
 - `lab_outputs/quantstats/`
 
 That folder is used only as a workflow artifact staging area in the lab repository.
+
+## Metric policy
+
+The diagnostics layer now uses a **two-tier metric policy**:
+
+### 1. Engine-aligned headline metrics
+These should align with the authoritative portfolio engine where available:
+- starting capital
+- latest NAV
+- since inception return
+- total return from starting capital
+- daily return
+- max drawdown
+- unrealized P&L
+
+### 2. Supplemental QuantStats diagnostics
+These remain useful as supporting analytics:
+- CAGR
+- Sharpe
+- Sortino
+- volatility
+- Calmar
+- best day / worst day
+- collapsed daily-series drawdown
+
+This prevents the diagnostics summary from overstating returns or understating drawdown when:
+- the first daily valuation point is already below starting capital
+- multiple same-day valuation marks exist in the raw history
 
 ## Safety rules
 
