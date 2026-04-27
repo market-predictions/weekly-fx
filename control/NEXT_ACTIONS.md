@@ -7,6 +7,24 @@
 
 ---
 
+## Phase 0 — keep the lab clone role explicit
+
+### 0. Treat `weekly-fx` as lab-first, not production-first
+- Owner: `[JOINT]`
+- Action:
+  - use `weekly-fx` for tool integration, diagnostics, and workflow experiments first
+  - keep `daily-fx` protected as the production repo until changes are validated
+- Done when: lab-only changes are documented and not confused with production behavior.
+
+### 0A. Keep lab delivery settings safe
+- Owner: `[USER]`
+- Action:
+  - do **not** copy production mail recipients and delivery secrets blindly into `weekly-fx`
+  - prefer test recipients, disabled send settings, or separate lab mail credentials
+- Done when: lab workflows cannot accidentally send client-facing reports.
+
+---
+
 ## Phase 1 — establish the working environment
 
 ### 1. Create the ChatGPT Project
@@ -109,6 +127,14 @@
   - compare delivery-readiness
 - Done when: the split architecture is validated as truly “as-is” in practical output quality, not just in wording.
 
+### 9A. Run the new QuantStats diagnostics workflow
+- Owner: `[JOINT]`
+- Action:
+  - use `.github/workflows/lab-quantstats-diagnostics.yml` manually
+  - inspect the generated artifact bundle from `lab_outputs/quantstats/`
+  - compare the diagnostics to Section 7 and to `output/fx_valuation_history.csv`
+- Done when: the lab diagnostics layer is validated as a useful QA aid.
+
 ---
 
 ## Phase 4 — tighten boundaries without changing behavior
@@ -152,13 +178,13 @@
 
 The best next move after this update is:
 1. keep the ChatGPT Project lean with `control/PROJECT_BOOTSTRAP.md` as the default upload
-2. use the control-layer read order for each serious FX session
-3. use the repo-native refresh trigger path whenever direct workflow dispatch is unavailable
-4. run split comparisons through `prompts/as_is_split/FX_RUNTIME_SPLIT.txt`
-5. only after output validation, continue boundary tightening in production-adjacent files
+2. set lab-safe GitHub secrets/variables in `weekly-fx`
+3. run the manual QuantStats diagnostics workflow once
+4. compare the diagnostics bundle against the current Section 7 numbers
+5. only after that, decide whether the next lab integration should be `vectorbt` or a stronger risk / optimization layer
 
 ---
 
 ## Current checkpoint
 
-**Architecture transition in progress — split runtime exists, production prompt remains protected, repo-native prep trigger fallback is now defined, and control docs should align fully with the lean bootstrap + live GitHub reading model.**
+**Lab clone established — split runtime still exists, production prompt remains protected, repo-native prep trigger fallback remains defined, and weekly-fx now includes a first manual QuantStats diagnostics layer for lab-only QA.**
