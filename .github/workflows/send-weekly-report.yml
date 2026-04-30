@@ -8,6 +8,9 @@ on:
       - "output/weekly_fx_review_*.md"
   workflow_dispatch:
 
+permissions:
+  contents: write
+
 jobs:
   send-report:
     runs-on: ubuntu-latest
@@ -15,6 +18,8 @@ jobs:
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -39,6 +44,14 @@ jobs:
           python -m pip install --upgrade pip
           pip install markdown weasyprint matplotlib
 
+      - name: Refresh FX portfolio state from Twelve Data
+        env:
+          TWELVE_DATA_API_KEY: ${{ secrets.TWELVE_DATA_API_KEY }}
+          TWELVEDATA_API_KEY: ${{ secrets.TWELVEDATA_API_KEY }}
+          TWELVE_DATA_KEY: ${{ secrets.TWELVE_DATA_KEY }}
+        run: |
+          python refresh_fx_portfolio_state.py
+
       - name: Validate HTML/PDF render before send
         run: |
           python send_fxreport.py --validate-only
@@ -52,3 +65,16 @@ jobs:
           MRKT_RPRTS_MAIL_FROM: ${{ secrets.MRKT_RPRTS_MAIL_FROM }}
           MRKT_RPRTS_MAIL_TO: ${{ secrets.MRKT_RPRTS_MAIL_TO }}
         run: python send_fxreport.py
+
+      - name: Commit refreshed FX state artifacts back to main
+        if: success()
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add output/fx_portfolio_state.json output/fx_valuation_history.csv output/fx_state_refresh_manifest.json || true
+          if git diff --cached --quiet; then
+            echo "No refreshed FX state artifacts to commit."
+            exit 0
+          fi
+          git commit -m "Persist refreshed Weekly FX state artifacts [skip ci]"
+          git push origin HEAD:main
