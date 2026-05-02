@@ -1,7 +1,7 @@
 {
-  "generated_at_utc": "2026-04-24T21:48:25Z",
-  "source_report": "weekly_fx_review_260423.md",
-  "overlay_as_of_utc": "2026-04-24T21:48:25Z",
+  "generated_at_utc": "2026-05-02T18:17:42Z",
+  "source_report": "weekly_fx_review_260430.md",
+  "overlay_as_of_utc": "2026-05-02T18:17:42Z",
   "valuation_source": "Twelve Data latest completed daily bars / overlay reuse",
   "updated_files": [
     "output/fx_portfolio_state.json",
@@ -9,10 +9,10 @@
     "output/fx_recommendation_scorecard.csv",
     "output/fx_state_refresh_manifest.json"
   ],
-  "nav_usd": 100538.0,
+  "nav_usd": 100808.95,
   "cash_usd": 24165.26,
-  "gross_exposure_usd": 76372.74,
-  "unrealized_pnl_usd": 545.85,
-  "daily_return_pct": 0.2769,
-  "since_inception_return_pct": 0.538
+  "gross_exposure_usd": 76643.69,
+  "unrealized_pnl_usd": 816.82,
+  "daily_return_pct": 0.2695,
+  "since_inception_return_pct": 0.8089
 }
