@@ -1,5 +1,5 @@
 {
-  "as_of_utc": "2026-05-02T18:17:42Z",
+  "as_of_utc": "2026-05-03T08:14:46Z",
   "anchor_currency": "USD",
   "source": "Twelve Data API",
   "rate_limit_config": {
@@ -20,12 +20,12 @@
       "Technical_Score_0_4": 2.5,
       "Technical_Verdict": "mixed",
       "Evidence": {
-        "latest_close": 1.172,
-        "d1_ema20": 1.170916,
-        "d1_ema50": 1.168139,
-        "w1_ema13": 1.166518,
-        "w1_ema26": 1.167193,
-        "recent_d1_median_abs_pct_change": 0.002032,
+        "latest_close": 1.17231,
+        "d1_ema20": 1.171077,
+        "d1_ema50": 1.168315,
+        "w1_ema13": 1.166562,
+        "w1_ema26": 1.167216,
+        "recent_d1_median_abs_pct_change": 0.001982,
         "daily_bars_used": 260,
         "weekly_bars_built": 41
       }
@@ -42,12 +42,12 @@
       "Technical_Score_0_4": 3.85,
       "Technical_Verdict": "strong positive",
       "Evidence": {
-        "latest_close": 1.35764,
-        "d1_ema20": 1.35084,
-        "d1_ema50": 1.345602,
-        "w1_ema13": 1.343191,
-        "w1_ema26": 1.342024,
-        "recent_d1_median_abs_pct_change": 0.002034,
+        "latest_close": 1.35782,
+        "d1_ema20": 1.351559,
+        "d1_ema50": 1.346104,
+        "w1_ema13": 1.343216,
+        "w1_ema26": 1.342037,
+        "recent_d1_median_abs_pct_change": 0.001708,
         "daily_bars_used": 260,
         "weekly_bars_built": 41
       }
@@ -64,12 +64,12 @@
       "Technical_Score_0_4": 3.85,
       "Technical_Verdict": "strong positive",
       "Evidence": {
-        "latest_close": 0.71998,
-        "d1_ema20": 0.714222,
-        "d1_ema50": 0.708065,
-        "w1_ema13": 0.70117,
-        "w1_ema26": 0.689779,
-        "recent_d1_median_abs_pct_change": 0.003131,
+        "latest_close": 0.72005,
+        "d1_ema20": 0.714799,
+        "d1_ema50": 0.708545,
+        "w1_ema13": 0.70118,
+        "w1_ema26": 0.689785,
+        "recent_d1_median_abs_pct_change": 0.002431,
         "daily_bars_used": 260,
         "weekly_bars_built": 41
       }
@@ -87,11 +87,11 @@
       "Technical_Verdict": "positive",
       "Evidence": {
         "latest_close": 0.58985,
-        "d1_ema20": 0.58719,
-        "d1_ema50": 0.585815,
+        "d1_ema20": 0.587443,
+        "d1_ema50": 0.585974,
         "w1_ema13": 0.584669,
         "w1_ema26": 0.584737,
-        "recent_d1_median_abs_pct_change": 0.003781,
+        "recent_d1_median_abs_pct_change": 0.002978,
         "daily_bars_used": 260,
         "weekly_bars_built": 41
       }
@@ -100,19 +100,19 @@
       "pair": "USDJPY",
       "symbol": "USD/JPY",
       "W1_Bias": "mild bullish",
-      "D1_Bias": "neutral",
+      "D1_Bias": "bearish",
       "Alignment": "mixed",
       "Pivot_Regime": "bearish",
       "Pivot_Zone_Fit": "below pivot",
       "Pivot_Conflict": false,
-      "Technical_Score_0_4": 2.3,
+      "Technical_Score_0_4": 1.8,
       "Technical_Verdict": "mixed",
       "Evidence": {
-        "latest_close": 157.07888,
-        "d1_ema20": 158.770603,
-        "d1_ema50": 158.693376,
-        "w1_ema13": 158.041174,
-        "w1_ema26": 156.478423,
+        "latest_close": 157.07993,
+        "d1_ema20": 158.60948,
+        "d1_ema50": 158.630056,
+        "w1_ema13": 158.041324,
+        "w1_ema26": 156.478501,
         "recent_d1_median_abs_pct_change": 0.001233,
         "daily_bars_used": 260,
         "weekly_bars_built": 43
@@ -130,12 +130,12 @@
       "Technical_Score_0_4": 0.15,
       "Technical_Verdict": "strong negative",
       "Evidence": {
-        "latest_close": 0.7819,
-        "d1_ema20": 0.785482,
-        "d1_ema50": 0.786442,
-        "w1_ema13": 0.786616,
-        "w1_ema26": 0.788758,
-        "recent_d1_median_abs_pct_change": 0.00227,
+        "latest_close": 0.78222,
+        "d1_ema20": 0.785179,
+        "d1_ema50": 0.78628,
+        "w1_ema13": 0.786661,
+        "w1_ema26": 0.788782,
+        "recent_d1_median_abs_pct_change": 0.002113,
         "daily_bars_used": 260,
         "weekly_bars_built": 42
       }
@@ -152,12 +152,12 @@
       "Technical_Score_0_4": 0.15,
       "Technical_Verdict": "strong negative",
       "Evidence": {
-        "latest_close": 1.3591,
-        "d1_ema20": 1.368105,
-        "d1_ema50": 1.372383,
-        "w1_ema13": 1.373298,
-        "w1_ema26": 1.37595,
-        "recent_d1_median_abs_pct_change": 0.001944,
+        "latest_close": 1.35928,
+        "d1_ema20": 1.367274,
+        "d1_ema50": 1.371873,
+        "w1_ema13": 1.373324,
+        "w1_ema26": 1.375963,
+        "recent_d1_median_abs_pct_change": 0.001854,
         "daily_bars_used": 260,
         "weekly_bars_built": 41
       }
@@ -174,12 +174,12 @@
       "Technical_Score_0_4": 0.95,
       "Technical_Verdict": "negative",
       "Evidence": {
-        "latest_close": 17.45736,
-        "d1_ema20": 17.435063,
-        "d1_ema50": 17.51287,
-        "w1_ema13": 17.605525,
-        "w1_ema26": 17.771251,
-        "recent_d1_median_abs_pct_change": 0.001141,
+        "latest_close": 17.45711,
+        "d1_ema20": 17.437155,
+        "d1_ema50": 17.51068,
+        "w1_ema13": 17.605489,
+        "w1_ema26": 17.771232,
+        "recent_d1_median_abs_pct_change": 0.000595,
         "daily_bars_used": 260,
         "weekly_bars_built": 41
       }
@@ -188,20 +188,20 @@
       "pair": "USDZAR",
       "symbol": "USD/ZAR",
       "W1_Bias": "mild bearish",
-      "D1_Bias": "neutral",
+      "D1_Bias": "bullish",
       "Alignment": "mixed",
       "Pivot_Regime": "bullish",
       "Pivot_Zone_Fit": "above pivot",
       "Pivot_Conflict": false,
-      "Technical_Score_0_4": 1.7,
+      "Technical_Score_0_4": 2.2,
       "Technical_Verdict": "mixed",
       "Evidence": {
-        "latest_close": 16.6513,
-        "d1_ema20": 16.589106,
-        "d1_ema50": 16.589635,
-        "w1_ema13": 16.62793,
-        "w1_ema26": 16.731225,
-        "recent_d1_median_abs_pct_change": 0.00352,
+        "latest_close": 16.63707,
+        "d1_ema20": 16.592825,
+        "d1_ema50": 16.591124,
+        "w1_ema13": 16.625897,
+        "w1_ema26": 16.730171,
+        "recent_d1_median_abs_pct_change": 0.002727,
         "daily_bars_used": 260,
         "weekly_bars_built": 41
       }
