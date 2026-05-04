@@ -1,0 +1,23 @@
+{
+  "schema_version": "1.0",
+  "as_of": "2026-05-05",
+  "source_note": "Manual policy-rate proxy config for estimated FX carry. Replace with broker rollover, tom-next, or forward-point data when available. Rates are annualized percentage proxies, not guaranteed realized carry.",
+  "base_currency": "USD",
+  "rates_pct": {
+    "USD": 3.625,
+    "EUR": 2.0,
+    "JPY": 0.5,
+    "CHF": 0.0,
+    "GBP": 3.75,
+    "AUD": 4.1,
+    "CAD": 2.25,
+    "NZD": 3.5,
+    "MXN": 6.75,
+    "ZAR": 7.0
+  },
+  "cash_ceiling_pct_normal_mode": 10.0,
+  "risk_on_soft_cap_pct": 55.0,
+  "risk_on_hard_warning_pct": 60.0,
+  "defensive_bucket": ["CHF", "JPY"],
+  "risk_on_bucket": ["AUD", "CAD", "MXN", "EUR", "GBP", "NZD", "ZAR"]
+}
