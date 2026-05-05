@@ -1,8 +1,8 @@
 {
   "schema_version": "1.0",
-  "generated_at_utc": "2026-05-05T00:00:00Z",
-  "run_date": "2026-05-03",
-  "nav_usd": 100806.2,
+  "generated_at_utc": "2026-05-05T02:06:10Z",
+  "run_date": "2026-05-05",
+  "nav_usd": 100544.34,
   "cash_usd": 24165.26,
   "policy": {
     "normal_usd_cash_ceiling_pct": 10.0,
@@ -12,21 +12,34 @@
   "buckets": [
     {
       "bucket": "usd_liquidity",
-      "currencies": ["USD"],
-      "exposure_pct": 23.97,
+      "currencies": [
+        "USD"
+      ],
+      "exposure_pct": 24.03,
       "exposure_usd": 24165.26
     },
     {
       "bucket": "defensive_fx",
-      "currencies": ["CHF", "JPY"],
-      "exposure_pct": 17.04,
-      "exposure_usd": 17169.08
+      "currencies": [
+        "CHF",
+        "JPY"
+      ],
+      "exposure_pct": 17.05,
+      "exposure_usd": 17138.28
     },
     {
       "bucket": "risk_on_cyclical_carry_fx",
-      "currencies": ["AUD", "CAD", "EUR", "GBP", "MXN", "NZD", "ZAR"],
-      "exposure_pct": 59.0,
-      "exposure_usd": 59471.86
+      "currencies": [
+        "AUD",
+        "CAD",
+        "EUR",
+        "GBP",
+        "MXN",
+        "NZD",
+        "ZAR"
+      ],
+      "exposure_pct": 58.92,
+      "exposure_usd": 59240.8
     }
   ],
   "warnings": [
