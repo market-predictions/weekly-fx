@@ -50,7 +50,7 @@ It consists of:
 - `docs/QUANTSTATS_LAB_DIAGNOSTICS.md`
 
 ### Why
-QuantStats offers a fast way to generate portfolio tear sheets and diagnostic analytics from the existing valuation history without modifying the client-facing Weekly FX Review flow. Its current package documentation shows support for generating a complete HTML report with `qs.reports.html(...)`, and the current release supports Python 3.10+ environments. citeturn581380search1turn581380search0
+QuantStats offers a fast way to generate portfolio tear sheets and diagnostic analytics from the existing valuation history without modifying the client-facing Weekly FX Review flow.
 
 ### Consequence
 - the new diagnostics workflow is manual and artifact-only
@@ -72,7 +72,7 @@ It consists of:
 - `docs/VECTORBT_LAB_RULE_SANDBOX.md`
 
 ### Why
-vectorbt is designed for fast, vectorized strategy research and portfolio backtesting on pandas/NumPy objects, and its current documentation and package metadata position it as a modern backtesting stack for rapid experimentation on Python 3.10+ environments. The right use here is not to replace the FX methodology, but to create a safe sandbox for testing whether simple portfolio-level trend and drawdown overlays would have materially changed the tracked model-portfolio path. ([vectorbt.dev](https://vectorbt.dev/?utm_source=chatgpt.com), [pypi.org](https://pypi.org/project/vectorbt/?utm_source=chatgpt.com))
+The right use is not to replace the FX methodology, but to create a safe sandbox for testing whether simple portfolio-level trend and drawdown overlays would have materially changed the tracked model-portfolio path.
 
 ### Consequence
 - the vectorbt workflow is manual and artifact-only
@@ -80,3 +80,46 @@ vectorbt is designed for fast, vectorized strategy research and portfolio backte
 - it does not replace the production FX decision framework
 - it treats the tracked portfolio NAV path as a **research proxy**, not as a tradable production signal source
 - any apparent outperformance must be treated first as a hypothesis and checked for short-history noise or overfitting before any production promotion
+
+---
+
+## 2026-05-05 — FX alpha-discipline layer: carry, cash discipline, true risk buckets, and no-action proof
+
+### Decision
+`weekly-fx` now adds an explicit **FX alpha-discipline layer** on top of the existing monolithic `fx.txt` prompt.
+
+The layer is implemented through:
+- `prompts/FX_ALPHA_DISCIPLINE_ADDENDUM.md`
+- `config/fx_policy_rate_proxies.json`
+- `output/fx_carry_snapshot.csv`
+- `output/fx_risk_bucket_snapshot.json`
+- `tools/fx_carry_utils.py`
+- `tools/write_fx_carry_and_risk_snapshots.py`
+- `tools/apply_fx_carry_accrual.py`
+- `tools/validate_fx_action_discipline.py`
+- updates to `.github/workflows/send-weekly-report.yml`
+- updates to `.github/workflows/refresh-fx-state.yml`
+- updates to `fx_refresh_all_state.py`
+
+### Why
+A USD-base unlevered spot FX portfolio has two direct return sources: spot price movement and carry. The prior report framework discussed carry and USD de-crowding qualitatively, but did not force visible carry accounting, USD cash contradiction checks, true macro exposure buckets, or proof for non-action.
+
+The new layer is designed to prevent:
+- calling a sleeve a carry opportunity without showing estimated carry
+- saying `Reduce USD` while leaving excess USD cash unexplained
+- mistaking several correlated risk-on currencies for true diversification
+- letting `Reduce` remain a sentiment label instead of an execution label
+- saying no rebalance occurred without a no-action proof table
+
+### Consequence
+Future compliant Weekly FX Reviews must include compact blocks labelled:
+- `FX carry dashboard`
+- `USD cash contradiction check`
+- `Risk-bucket exposure`
+- `No-action override table` when no rebalance occurs
+
+The send workflow should now fail before render/send when those requirements are missing.
+
+Carry is currently estimated through policy-rate proxies, not broker rollover or forward points. That distinction must stay visible until a better carry source is connected.
+
+The next validation step is to generate a fresh compliant report and confirm the workflow gate passes only when the new blocks are present.
