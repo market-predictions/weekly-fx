@@ -1,17 +1,18 @@
 # FX Review OS — Current State
 
 ## Snapshot date
-2026-04-27
+2026-05-05
 
 ## What this repository currently is
 
-This repository is now the **non-production lab clone** of the original FX production system.
+This repository is the **non-production lab clone** of the original FX production system.
 
 It contains:
 - the mirrored FX production prompt and workflow files from `daily-fx`
 - the existing archived outputs and explicit state artifacts in `output/`
 - the same technical overlay and mark-to-market portfolio engine concept used by production
-- a growing **lab-only analytics and rule-testing layer** for non-destructive QA and tool evaluation
+- a lab-only analytics and rule-testing layer for non-destructive QA and tool evaluation
+- a new alpha-discipline layer for carry visibility, USD cash discipline, true risk buckets, and no-action proof
 
 ## Current strengths
 
@@ -21,9 +22,13 @@ It contains:
 - Explicit technical-overlay contract already exists.
 - Explicit mark-to-market portfolio engine concept already exists.
 - Strong fail-loud delivery discipline.
-- A safe lab surface now exists for testing tooling without changing `daily-fx` first.
-- A first lab-only QuantStats diagnostics layer now exists for portfolio QA.
-- A first lab-only vectorbt rule sandbox now exists for portfolio-level overlay exploration.
+- A safe lab surface exists for testing tooling without changing `daily-fx` first.
+- A lab-only QuantStats diagnostics layer exists for portfolio QA.
+- A lab-only vectorbt rule sandbox exists for portfolio-level overlay exploration.
+- FX carry is now visible via `output/fx_carry_snapshot.csv`.
+- True macro concentration is now visible via `output/fx_risk_bucket_snapshot.json`.
+- Future reports are hardened by `prompts/FX_ALPHA_DISCIPLINE_ADDENDUM.md`.
+- The send workflow now includes pre-send alpha-discipline validation through `tools/validate_fx_action_discipline.py`.
 
 ## Current weaknesses
 
@@ -37,18 +42,22 @@ Even though FX is more mature than ETF on explicit state, the prompt still mixes
 - workflow orchestration
 - delivery completion logic
 
-### 2. Lab / production boundaries were previously implicit
-Before the clone-and-lab setup, new tooling would have had to compete directly with the production repo.
-The weekly lab repos reduce that risk, but they now need to keep their lab role explicit.
+The new alpha-discipline layer is currently implemented as an addendum rather than a full split of the monolith. That is safer, but the longer-term direction is still to separate the decision framework, input/state contract, output contract, and runbook more cleanly.
+
+### 2. Carry source is still a proxy
+The carry layer currently uses policy-rate proxy inputs in `config/fx_policy_rate_proxies.json`.
+
+This is useful for visibility and discipline, but it is not the same as actual broker rollover, tom-next, or forward-point carry. Future work should replace or supplement the proxy with a more direct carry source when available.
 
 ### 3. Authority rules need to stay visible
-FX already has more explicit state files than ETF, but that only helps if future sessions can quickly see:
+FX now has more explicit state files than before, but that only helps if future sessions can quickly see:
 - which file is authoritative for implementation facts
 - which file is authoritative for strategy intent
-- what happens if those disagree
+- which files are estimated carry/risk diagnostics
+- what happens if these disagree
 
-### 4. ChatGPT Project layer still has to be created manually
-The repo side can now be structured, but the actual recurring ChatGPT workspace is not created automatically by the repository.
+### 4. Lab / production boundary remains important
+`weekly-fx` is still a lab/safe experimentation repo. Changes should not be assumed production-approved for `daily-fx` until tested and intentionally promoted.
 
 ## Target architecture
 
@@ -61,41 +70,45 @@ The repo side can now be structured, but the actual recurring ChatGPT workspace 
 - GitHub remains the source of truth for prompt, scripts, workflows, outputs, and control docs.
 - Existing FX state files remain part of the operating core.
 - The control layer reduces restart friction and architecture drift.
-- `weekly-fx` is the first experimentation surface for tool integrations before production promotion.
+- `weekly-fx` remains the experimentation surface for tool integrations before production promotion.
+- Carry and risk-bucket snapshots are now part of the input/state contract.
 
 ### Delivery side
 - Delivery remains in `send_fxreport.py` plus GitHub Actions.
-- The prompt keeps decision standards and output requirements, but should gradually stop being the only runbook.
-- Lab analytics and sandbox layers must remain separate from production email delivery until explicitly validated.
+- The prompt keeps decision standards and output requirements, while scripts/workflows own more execution discipline.
+- The send workflow now gates client-facing delivery on alpha-discipline validation.
 
 ## Immediate priorities
 
-### Priority A — keep the lab clone role explicit
+### Priority A — validate the alpha-discipline layer
 Completed in this step:
-- establish `weekly-fx` as the safe experimentation surface
-- preserve the mirrored production files
-- begin documenting lab-only additions explicitly in control files
+- add `prompts/FX_ALPHA_DISCIPLINE_ADDENDUM.md`
+- add `config/fx_policy_rate_proxies.json`
+- add `output/fx_carry_snapshot.csv`
+- add `output/fx_risk_bucket_snapshot.json`
+- add `tools/write_fx_carry_and_risk_snapshots.py`
+- add `tools/apply_fx_carry_accrual.py`
+- add `tools/validate_fx_action_discipline.py`
+- update refresh/send workflows to generate and validate the new artifacts
 
-### Priority B — validate the new QuantStats diagnostics layer
-Completed in this step:
-- add a standalone QuantStats diagnostics script
-- add a manual GitHub Actions workflow that generates diagnostics artifacts only
-- keep diagnostics separate from the client-facing report and email flow
+Planned next:
+- generate the next FX report with the new required blocks
+- verify the send workflow fails loud if the blocks are missing
+- verify the send workflow passes once the new report includes the blocks
 
-### Priority C — validate the new vectorbt sandbox layer
-Completed in this step:
-- add a standalone vectorbt rule sandbox script
-- add a manual GitHub Actions workflow that generates sandbox artifacts only
-- keep the sandbox separate from production strategy and delivery logic
+### Priority B — validate carry quality
+Planned next:
+- compare policy-rate proxy carry with any available broker rollover, forward points, or tom-next data
+- avoid presenting proxy carry as guaranteed realized carry
+- decide whether carry should remain a report estimate or become full NAV accrual in production
 
-### Priority D — compare lab outputs against current state and report behavior
+### Priority C — continue lab analytics validation
 Planned next:
 - compare QuantStats diagnostics against Section 7 / `fx_valuation_history.csv`
-- inspect the vectorbt sandbox results for signal quality, overfitting risk, and practical relevance
-- decide which outputs are useful for internal QA only
-- avoid leaking lab-only analytics into production presentation before validation
+- inspect vectorbt sandbox results for signal quality, overfitting risk, and practical relevance
+- keep lab-only analytics out of client-facing delivery unless explicitly promoted
 
-### Priority E — make the FX layer boundaries more explicit
+### Priority D — make FX boundaries more explicit
 Still planned:
 - extract the state/input contract more cleanly from `fx.txt`
 - extract the output contract more cleanly from `fx.txt`
@@ -112,23 +125,19 @@ For any future weekly-fx architecture or integration session:
 ## Current role split
 
 ### Manual by user
-- create the ChatGPT Project
-- paste project instructions
-- upload `control/PROJECT_BOOTSTRAP.md` as the default project context
-- set lab-safe GitHub secrets/variables where needed
-- decide when a lab change is ready to be promoted to production
+- keep production `daily-fx` protected until lab changes are validated
+- decide when the alpha-discipline layer is ready for production promotion
+- provide broker rollover / forward-point data if available
 
 ### Can be done by assistant
-- design the project instructions
-- design the GPT spec
-- create and update GitHub control files
+- update GitHub control files
 - refactor prompts
-- propose or write repo files
 - review and improve scripts/workflows
 - strengthen state authority rules
-- add lab-only diagnostics and QA tooling
-- add lab-only rule-testing sandboxes
+- generate test reports using the new alpha-discipline requirements
+- inspect workflow failures and delivery receipts
+- prepare promotion PRs from weekly-fx to daily-fx when approved
 
 ## Current status label
 
-**Lab clone established — weekly-fx now mirrors the FX production system and includes both a lab-only QuantStats diagnostics layer and a lab-only vectorbt rule sandbox, while production remains protected in `daily-fx`.**
+**FX alpha-discipline layer implemented in weekly-fx — carry visibility, USD cash contradiction checks, risk-bucket exposure, carry-accrual scaffolding, and pre-send validation now exist in the lab repo. Next step is to generate a fresh report that satisfies the new required blocks and verify the workflow gate.**
