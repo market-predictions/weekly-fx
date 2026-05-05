@@ -2,9 +2,11 @@
 """
 fx_refresh_all_state.py
 
-Wrapper that refreshes the full FX technical/state layer in two stages:
-1. fx_technical_overlay.py  -> Twelve Data OHLC fetch + technical overlay
+Wrapper that refreshes the full FX technical/state layer in staged order:
+1. fx_technical_overlay.py -> Twelve Data OHLC fetch + technical overlay
 2. fx_refresh_portfolio_state.py -> portfolio/state/valuation/scorecard refresh
+3. tools/apply_fx_carry_accrual.py -> policy-rate proxy carry accrual into state/NAV
+4. tools/write_fx_carry_and_risk_snapshots.py -> carry and true risk-bucket artifacts
 """
 
 from __future__ import annotations
@@ -28,6 +30,8 @@ def run_step(script_name: str) -> None:
 def main() -> None:
     run_step("fx_technical_overlay.py")
     run_step("fx_refresh_portfolio_state.py")
+    run_step("tools/apply_fx_carry_accrual.py")
+    run_step("tools/write_fx_carry_and_risk_snapshots.py")
     print("FX_REFRESH_ALL_OK", flush=True)
 
 
