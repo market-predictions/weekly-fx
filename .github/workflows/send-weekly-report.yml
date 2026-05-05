@@ -51,6 +51,14 @@ jobs:
           TWELVE_DATA_KEY: ${{ secrets.TWELVE_DATA_KEY }}
         run: |
           python refresh_fx_portfolio_state.py
+          python tools/apply_fx_carry_accrual.py
+          python tools/write_fx_carry_and_risk_snapshots.py
+
+      - name: Validate FX alpha discipline before render
+        run: |
+          python tools/write_fx_carry_and_risk_snapshots.py --check-only
+          python tools/apply_fx_carry_accrual.py --check-only
+          python tools/validate_fx_action_discipline.py
 
       - name: Validate HTML/PDF render before send
         run: |
@@ -71,10 +79,15 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add output/fx_portfolio_state.json output/fx_valuation_history.csv output/fx_state_refresh_manifest.json || true
+          git add \
+            output/fx_portfolio_state.json \
+            output/fx_valuation_history.csv \
+            output/fx_state_refresh_manifest.json \
+            output/fx_carry_snapshot.csv \
+            output/fx_risk_bucket_snapshot.json || true
           if git diff --cached --quiet; then
             echo "No refreshed FX state artifacts to commit."
             exit 0
           fi
-          git commit -m "Persist refreshed Weekly FX state artifacts [skip ci]"
+          git commit -m "Persist refreshed Weekly FX state and carry artifacts [skip ci]"
           git push origin HEAD:main
