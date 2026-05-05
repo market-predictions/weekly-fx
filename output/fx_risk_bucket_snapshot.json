@@ -1,0 +1,50 @@
+{
+  "schema_version": "1.0",
+  "generated_at_utc": "2026-05-05T00:00:00Z",
+  "run_date": "2026-05-03",
+  "nav_usd": 100806.2,
+  "cash_usd": 24165.26,
+  "policy": {
+    "normal_usd_cash_ceiling_pct": 10.0,
+    "risk_on_soft_cap_pct": 55.0,
+    "risk_on_hard_warning_pct": 60.0
+  },
+  "buckets": [
+    {
+      "bucket": "usd_liquidity",
+      "currencies": ["USD"],
+      "exposure_pct": 23.97,
+      "exposure_usd": 24165.26
+    },
+    {
+      "bucket": "defensive_fx",
+      "currencies": ["CHF", "JPY"],
+      "exposure_pct": 17.04,
+      "exposure_usd": 17169.08
+    },
+    {
+      "bucket": "risk_on_cyclical_carry_fx",
+      "currencies": ["AUD", "CAD", "EUR", "GBP", "MXN", "NZD", "ZAR"],
+      "exposure_pct": 59.0,
+      "exposure_usd": 59471.86
+    }
+  ],
+  "warnings": [
+    {
+      "rule": "usd_cash_ceiling",
+      "status": "breach",
+      "detail": "USD cash is above the normal-mode ceiling; reports must reduce it, declare capital-preservation mode, or include a dated no-action override."
+    },
+    {
+      "rule": "risk_on_bucket_soft_cap",
+      "status": "breach",
+      "detail": "Risk-on/cyclical/carry FX exposure is above the 55% soft cap."
+    },
+    {
+      "rule": "risk_on_bucket_hard_warning",
+      "status": "ok",
+      "detail": "Risk-on/cyclical/carry FX exposure is below the 60% hard-warning threshold."
+    }
+  ],
+  "source": "output/fx_portfolio_state.json + config/fx_policy_rate_proxies.json"
+}
