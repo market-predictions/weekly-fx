@@ -48,10 +48,12 @@ jobs:
             output/fx_portfolio_state.json \
             output/fx_valuation_history.csv \
             output/fx_recommendation_scorecard.csv \
-            output/fx_state_refresh_manifest.json
+            output/fx_state_refresh_manifest.json \
+            output/fx_carry_snapshot.csv \
+            output/fx_risk_bucket_snapshot.json
           if git diff --cached --quiet; then
             echo "No refreshed state changes to commit"
           else
-            git commit -m "Refresh FX technical overlay and state"
+            git commit -m "Refresh FX technical overlay, carry and state"
             git push
           fi
