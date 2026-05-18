@@ -1,5 +1,5 @@
 {
-  "as_of_utc": "2026-05-17T14:05:47Z",
+  "as_of_utc": "2026-05-18T10:23:04Z",
   "anchor_currency": "USD",
   "source": "Twelve Data API",
   "rate_limit_config": {
@@ -11,20 +11,20 @@
     {
       "pair": "EURUSD",
       "symbol": "EUR/USD",
-      "W1_Bias": "neutral",
+      "W1_Bias": "bearish",
       "D1_Bias": "neutral",
       "Alignment": "mixed",
       "Pivot_Regime": "bearish",
       "Pivot_Zone_Fit": "below pivot",
       "Pivot_Conflict": false,
-      "Technical_Score_0_4": 1.8,
-      "Technical_Verdict": "mixed",
+      "Technical_Score_0_4": 1.0,
+      "Technical_Verdict": "negative",
       "Evidence": {
-        "latest_close": 1.16249,
-        "d1_ema20": 1.170138,
-        "d1_ema50": 1.169391,
-        "w1_ema13": 1.167416,
-        "w1_ema26": 1.167256,
+        "latest_close": 1.16354,
+        "d1_ema20": 1.169506,
+        "d1_ema50": 1.16916,
+        "w1_ema13": 1.166868,
+        "w1_ema26": 1.167238,
         "recent_d1_median_abs_pct_change": 0.001592,
         "daily_bars_used": 260,
         "weekly_bars_built": 41
@@ -33,20 +33,20 @@
     {
       "pair": "GBPUSD",
       "symbol": "GBP/USD",
-      "W1_Bias": "neutral",
-      "D1_Bias": "neutral",
-      "Alignment": "mixed",
+      "W1_Bias": "bearish",
+      "D1_Bias": "bearish",
+      "Alignment": "aligned bearish",
       "Pivot_Regime": "bearish",
       "Pivot_Zone_Fit": "below pivot",
       "Pivot_Conflict": false,
-      "Technical_Score_0_4": 1.8,
-      "Technical_Verdict": "mixed",
+      "Technical_Score_0_4": 0.15,
+      "Technical_Verdict": "strong negative",
       "Evidence": {
-        "latest_close": 1.3328,
-        "d1_ema20": 1.348215,
-        "d1_ema50": 1.347501,
-        "w1_ema13": 1.343464,
-        "w1_ema26": 1.342504,
+        "latest_close": 1.33607,
+        "d1_ema20": 1.347037,
+        "d1_ema50": 1.347043,
+        "w1_ema13": 1.342395,
+        "w1_ema26": 1.342437,
         "recent_d1_median_abs_pct_change": 0.003142,
         "daily_bars_used": 260,
         "weekly_bars_built": 41
@@ -64,11 +64,11 @@
       "Technical_Score_0_4": 3.05,
       "Technical_Verdict": "positive",
       "Evidence": {
-        "latest_close": 0.71477,
-        "d1_ema20": 0.71894,
-        "d1_ema50": 0.713791,
-        "w1_ema13": 0.70593,
-        "w1_ema26": 0.693858,
+        "latest_close": 0.71551,
+        "d1_ema20": 0.718624,
+        "d1_ema50": 0.713863,
+        "w1_ema13": 0.70731,
+        "w1_ema26": 0.69541,
         "recent_d1_median_abs_pct_change": 0.002374,
         "daily_bars_used": 260,
         "weekly_bars_built": 41
@@ -77,21 +77,21 @@
     {
       "pair": "NZDUSD",
       "symbol": "NZD/USD",
-      "W1_Bias": "neutral",
+      "W1_Bias": "mild bullish",
       "D1_Bias": "neutral",
       "Alignment": "mixed",
       "Pivot_Regime": "bearish",
       "Pivot_Zone_Fit": "below pivot",
       "Pivot_Conflict": false,
-      "Technical_Score_0_4": 1.8,
+      "Technical_Score_0_4": 2.3,
       "Technical_Verdict": "mixed",
       "Evidence": {
-        "latest_close": 0.58412,
-        "d1_ema20": 0.589709,
-        "d1_ema50": 0.588188,
-        "w1_ema13": 0.585793,
-        "w1_ema26": 0.585124,
-        "recent_d1_median_abs_pct_change": 0.002992,
+        "latest_close": 0.58567,
+        "d1_ema20": 0.589335,
+        "d1_ema50": 0.588094,
+        "w1_ema13": 0.585784,
+        "w1_ema26": 0.585045,
+        "recent_d1_median_abs_pct_change": 0.002782,
         "daily_bars_used": 260,
         "weekly_bars_built": 41
       }
@@ -99,23 +99,23 @@
     {
       "pair": "USDJPY",
       "symbol": "USD/JPY",
-      "W1_Bias": "mild bullish",
+      "W1_Bias": "bullish",
       "D1_Bias": "neutral",
       "Alignment": "mixed",
       "Pivot_Regime": "bullish",
       "Pivot_Zone_Fit": "above pivot",
       "Pivot_Conflict": false,
-      "Technical_Score_0_4": 2.7,
+      "Technical_Score_0_4": 3.0,
       "Technical_Verdict": "positive",
       "Evidence": {
-        "latest_close": 158.68274,
-        "d1_ema20": 158.00811,
-        "d1_ema50": 158.208414,
-        "w1_ema13": 157.937353,
-        "w1_ema26": 156.633957,
+        "latest_close": 158.92216,
+        "d1_ema20": 158.095332,
+        "d1_ema50": 158.236517,
+        "w1_ema13": 158.078281,
+        "w1_ema26": 156.803588,
         "recent_d1_median_abs_pct_change": 0.002394,
         "daily_bars_used": 260,
-        "weekly_bars_built": 42
+        "weekly_bars_built": 43
       }
     },
     {
@@ -130,14 +130,14 @@
       "Technical_Score_0_4": 1.7,
       "Technical_Verdict": "mixed",
       "Evidence": {
-        "latest_close": 0.78732,
-        "d1_ema20": 0.783259,
-        "d1_ema50": 0.784443,
-        "w1_ema13": 0.785579,
-        "w1_ema26": 0.788157,
-        "recent_d1_median_abs_pct_change": 0.00195,
+        "latest_close": 0.78548,
+        "d1_ema20": 0.783413,
+        "d1_ema50": 0.784459,
+        "w1_ema13": 0.785483,
+        "w1_ema26": 0.787913,
+        "recent_d1_median_abs_pct_change": 0.001538,
         "daily_bars_used": 260,
-        "weekly_bars_built": 41
+        "weekly_bars_built": 42
       }
     },
     {
@@ -152,12 +152,12 @@
       "Technical_Score_0_4": 1.7,
       "Technical_Verdict": "mixed",
       "Evidence": {
-        "latest_close": 1.37499,
-        "d1_ema20": 1.369627,
-        "d1_ema50": 1.37083,
-        "w1_ema13": 1.372896,
-        "w1_ema26": 1.375555,
-        "recent_d1_median_abs_pct_change": 0.00073,
+        "latest_close": 1.37423,
+        "d1_ema20": 1.370056,
+        "d1_ema50": 1.370959,
+        "w1_ema13": 1.373085,
+        "w1_ema26": 1.375714,
+        "recent_d1_median_abs_pct_change": 0.000583,
         "daily_bars_used": 260,
         "weekly_bars_built": 41
       }
@@ -174,14 +174,14 @@
       "Technical_Score_0_4": 0.55,
       "Technical_Verdict": "strong negative",
       "Evidence": {
-        "latest_close": 17.34122,
-        "d1_ema20": 17.313415,
-        "d1_ema50": 17.408677,
-        "w1_ema13": 17.519455,
-        "w1_ema26": 17.701793,
+        "latest_close": 17.31975,
+        "d1_ema20": 17.314083,
+        "d1_ema50": 17.405217,
+        "w1_ema13": 17.491018,
+        "w1_ema26": 17.673545,
         "recent_d1_median_abs_pct_change": 0.002691,
         "daily_bars_used": 260,
-        "weekly_bars_built": 41
+        "weekly_bars_built": 42
       }
     },
     {
@@ -196,36 +196,36 @@
       "Technical_Score_0_4": 1.7,
       "Technical_Verdict": "mixed",
       "Evidence": {
-        "latest_close": 16.69854,
-        "d1_ema20": 16.559441,
-        "d1_ema50": 16.567869,
-        "w1_ema13": 16.606696,
-        "w1_ema26": 16.702384,
+        "latest_close": 16.67058,
+        "d1_ema20": 16.568871,
+        "d1_ema50": 16.571392,
+        "w1_ema13": 16.61418,
+        "w1_ema26": 16.699109,
         "recent_d1_median_abs_pct_change": 0.004875,
         "daily_bars_used": 260,
-        "weekly_bars_built": 41
+        "weekly_bars_built": 42
       }
     }
   ],
   "currencies": {
     "USD": {
-      "ta_score": -0.22,
+      "ta_score": 0.11,
       "ta_status": "mixed",
       "primary_pair_evidence": [
-        "EURUSD -> inverse of mixed",
-        "GBPUSD -> inverse of mixed",
+        "EURUSD -> inverse of negative",
+        "GBPUSD -> inverse of strong negative",
         "AUDUSD -> inverse of positive",
         "NZDUSD -> inverse of mixed"
       ],
       "confirmation_flag": "mixed"
     },
     "EUR": {
-      "ta_score": 0.0,
-      "ta_status": "mixed",
+      "ta_score": -1.0,
+      "ta_status": "negative",
       "primary_pair_evidence": [
-        "EURUSD -> mixed"
+        "EURUSD -> negative"
       ],
-      "confirmation_flag": "mixed"
+      "confirmation_flag": "confirming"
     },
     "JPY": {
       "ta_score": -1.0,
@@ -244,12 +244,12 @@
       "confirmation_flag": "mixed"
     },
     "GBP": {
-      "ta_score": 0.0,
-      "ta_status": "mixed",
+      "ta_score": -2.0,
+      "ta_status": "strong negative",
       "primary_pair_evidence": [
-        "GBPUSD -> mixed"
+        "GBPUSD -> strong negative"
       ],
-      "confirmation_flag": "mixed"
+      "confirmation_flag": "confirming"
     },
     "AUD": {
       "ta_score": 1.0,
