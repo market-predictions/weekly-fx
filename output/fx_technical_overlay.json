@@ -1,5 +1,5 @@
 {
-  "as_of_utc": "2026-06-06T14:17:37Z",
+  "as_of_utc": "2026-06-07T09:30:22Z",
   "anchor_currency": "USD",
   "source": "Twelve Data API",
   "rate_limit_config": {
@@ -20,12 +20,12 @@
       "Technical_Score_0_4": 0.15,
       "Technical_Verdict": "strong negative",
       "Evidence": {
-        "latest_close": 1.15214,
-        "d1_ema20": 1.162006,
-        "d1_ema50": 1.165043,
-        "w1_ema13": 1.164448,
-        "w1_ema26": 1.165953,
-        "recent_d1_median_abs_pct_change": 0.001125,
+        "latest_close": 1.15235,
+        "d1_ema20": 1.161089,
+        "d1_ema50": 1.164547,
+        "w1_ema13": 1.164478,
+        "w1_ema26": 1.165968,
+        "recent_d1_median_abs_pct_change": 0.00102,
         "daily_bars_used": 260,
         "weekly_bars_built": 40
       }
@@ -42,12 +42,12 @@
       "Technical_Score_0_4": 1.3,
       "Technical_Verdict": "negative",
       "Evidence": {
-        "latest_close": 1.33409,
-        "d1_ema20": 1.343036,
-        "d1_ema50": 1.344969,
-        "w1_ema13": 1.342567,
-        "w1_ema26": 1.342448,
-        "recent_d1_median_abs_pct_change": 0.001098,
+        "latest_close": 1.3342,
+        "d1_ema20": 1.34219,
+        "d1_ema50": 1.344545,
+        "w1_ema13": 1.342582,
+        "w1_ema26": 1.342456,
+        "recent_d1_median_abs_pct_change": 0.00081,
         "daily_bars_used": 260,
         "weekly_bars_built": 40
       }
@@ -56,20 +56,20 @@
       "pair": "AUDUSD",
       "symbol": "AUD/USD",
       "W1_Bias": "mild bullish",
-      "D1_Bias": "neutral",
+      "D1_Bias": "bearish",
       "Alignment": "mixed",
       "Pivot_Regime": "bearish",
       "Pivot_Zone_Fit": "below pivot",
       "Pivot_Conflict": false,
-      "Technical_Score_0_4": 2.3,
+      "Technical_Score_0_4": 1.8,
       "Technical_Verdict": "mixed",
       "Evidence": {
-        "latest_close": 0.7042,
-        "d1_ema20": 0.714031,
-        "d1_ema50": 0.713903,
-        "w1_ema13": 0.708119,
-        "w1_ema26": 0.697728,
-        "recent_d1_median_abs_pct_change": 0.00284,
+        "latest_close": 0.70457,
+        "d1_ema20": 0.71313,
+        "d1_ema50": 0.713537,
+        "w1_ema13": 0.708172,
+        "w1_ema26": 0.697755,
+        "recent_d1_median_abs_pct_change": 0.002802,
         "daily_bars_used": 260,
         "weekly_bars_built": 40
       }
@@ -78,20 +78,20 @@
       "pair": "NZDUSD",
       "symbol": "NZD/USD",
       "W1_Bias": "neutral",
-      "D1_Bias": "neutral",
+      "D1_Bias": "bearish",
       "Alignment": "mixed",
       "Pivot_Regime": "bearish",
       "Pivot_Zone_Fit": "below pivot",
       "Pivot_Conflict": false,
-      "Technical_Score_0_4": 1.8,
-      "Technical_Verdict": "mixed",
+      "Technical_Score_0_4": 1.3,
+      "Technical_Verdict": "negative",
       "Evidence": {
-        "latest_close": 0.57966,
-        "d1_ema20": 0.588386,
-        "d1_ema50": 0.588354,
-        "w1_ema13": 0.586421,
-        "w1_ema26": 0.58541,
-        "recent_d1_median_abs_pct_change": 0.004839,
+        "latest_close": 0.57961,
+        "d1_ema20": 0.587549,
+        "d1_ema50": 0.58801,
+        "w1_ema13": 0.586414,
+        "w1_ema26": 0.585406,
+        "recent_d1_median_abs_pct_change": 0.003137,
         "daily_bars_used": 260,
         "weekly_bars_built": 40
       }
@@ -108,12 +108,12 @@
       "Technical_Score_0_4": 3.85,
       "Technical_Verdict": "strong positive",
       "Evidence": {
-        "latest_close": 160.32337,
-        "d1_ema20": 159.447328,
-        "d1_ema50": 158.933444,
-        "w1_ema13": 158.556396,
-        "w1_ema26": 157.225271,
-        "recent_d1_median_abs_pct_change": 0.001027,
+        "latest_close": 160.33,
+        "d1_ema20": 159.532239,
+        "d1_ema50": 158.988567,
+        "w1_ema13": 158.557343,
+        "w1_ema26": 157.225762,
+        "recent_d1_median_abs_pct_change": 0.000968,
         "daily_bars_used": 260,
         "weekly_bars_built": 41
       }
@@ -130,14 +130,14 @@
       "Technical_Score_0_4": 2.7,
       "Technical_Verdict": "positive",
       "Evidence": {
-        "latest_close": 0.79595,
-        "d1_ema20": 0.787425,
-        "d1_ema50": 0.785911,
-        "w1_ema13": 0.786313,
-        "w1_ema26": 0.787669,
-        "recent_d1_median_abs_pct_change": 0.002174,
+        "latest_close": 0.79626,
+        "d1_ema20": 0.788266,
+        "d1_ema50": 0.786317,
+        "w1_ema13": 0.786353,
+        "w1_ema26": 0.787581,
+        "recent_d1_median_abs_pct_change": 0.002075,
         "daily_bars_used": 260,
-        "weekly_bars_built": 41
+        "weekly_bars_built": 40
       }
     },
     {
@@ -152,11 +152,11 @@
       "Technical_Score_0_4": 2.7,
       "Technical_Verdict": "positive",
       "Evidence": {
-        "latest_close": 1.39395,
-        "d1_ema20": 1.383133,
-        "d1_ema50": 1.377821,
-        "w1_ema13": 1.377745,
-        "w1_ema26": 1.377924,
+        "latest_close": 1.39344,
+        "d1_ema20": 1.384113,
+        "d1_ema50": 1.378432,
+        "w1_ema13": 1.377673,
+        "w1_ema26": 1.377886,
         "recent_d1_median_abs_pct_change": 0.000902,
         "daily_bars_used": 260,
         "weekly_bars_built": 40
@@ -165,21 +165,21 @@
     {
       "pair": "USDMXN",
       "symbol": "USD/MXN",
-      "W1_Bias": "bearish",
+      "W1_Bias": "mild bearish",
       "D1_Bias": "neutral",
       "Alignment": "mixed",
       "Pivot_Regime": "bullish",
       "Pivot_Zone_Fit": "above pivot",
       "Pivot_Conflict": false,
-      "Technical_Score_0_4": 1.4,
-      "Technical_Verdict": "negative",
+      "Technical_Score_0_4": 1.7,
+      "Technical_Verdict": "mixed",
       "Evidence": {
-        "latest_close": 17.46976,
-        "d1_ema20": 17.351368,
-        "d1_ema50": 17.374774,
-        "w1_ema13": 17.470085,
-        "w1_ema26": 17.641078,
-        "recent_d1_median_abs_pct_change": 0.002088,
+        "latest_close": 17.47821,
+        "d1_ema20": 17.363415,
+        "d1_ema50": 17.378815,
+        "w1_ema13": 17.471292,
+        "w1_ema26": 17.641704,
+        "recent_d1_median_abs_pct_change": 0.001961,
         "daily_bars_used": 260,
         "weekly_bars_built": 40
       }
@@ -196,12 +196,12 @@
       "Technical_Score_0_4": 1.7,
       "Technical_Verdict": "mixed",
       "Evidence": {
-        "latest_close": 16.56503,
-        "d1_ema20": 16.403129,
-        "d1_ema50": 16.465722,
-        "w1_ema13": 16.53188,
-        "w1_ema26": 16.635109,
-        "recent_d1_median_abs_pct_change": 0.004119,
+        "latest_close": 16.57386,
+        "d1_ema20": 16.419152,
+        "d1_ema50": 16.469861,
+        "w1_ema13": 16.533142,
+        "w1_ema26": 16.635763,
+        "recent_d1_median_abs_pct_change": 0.003198,
         "daily_bars_used": 260,
         "weekly_bars_built": 40
       }
@@ -209,13 +209,13 @@
   ],
   "currencies": {
     "USD": {
-      "ta_score": 0.67,
+      "ta_score": 0.89,
       "ta_status": "positive",
       "primary_pair_evidence": [
         "EURUSD -> inverse of strong negative",
         "GBPUSD -> inverse of negative",
         "AUDUSD -> inverse of mixed",
-        "NZDUSD -> inverse of mixed"
+        "NZDUSD -> inverse of negative"
       ],
       "confirmation_flag": "confirming"
     },
@@ -268,20 +268,20 @@
       "confirmation_flag": "confirming"
     },
     "NZD": {
+      "ta_score": -1.0,
+      "ta_status": "negative",
+      "primary_pair_evidence": [
+        "NZDUSD -> negative"
+      ],
+      "confirmation_flag": "confirming"
+    },
+    "MXN": {
       "ta_score": 0.0,
       "ta_status": "mixed",
       "primary_pair_evidence": [
-        "NZDUSD -> mixed"
+        "USDMXN -> inverse of mixed"
       ],
       "confirmation_flag": "mixed"
-    },
-    "MXN": {
-      "ta_score": 1.0,
-      "ta_status": "positive",
-      "primary_pair_evidence": [
-        "USDMXN -> inverse of negative"
-      ],
-      "confirmation_flag": "confirming"
     },
     "ZAR": {
       "ta_score": 0.0,
