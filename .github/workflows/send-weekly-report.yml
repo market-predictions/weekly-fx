@@ -64,8 +64,9 @@ jobs:
         run: |
           python send_fxreport.py --validate-only
 
-      - name: Send email
+      - name: Send lab email after independent assurance
         env:
+          FX_DELIVERY_ENVIRONMENT: lab
           MRKT_RPRTS_SMTP_HOST: ${{ secrets.MRKT_RPRTS_SMTP_HOST }}
           MRKT_RPRTS_SMTP_PORT: ${{ secrets.MRKT_RPRTS_SMTP_PORT }}
           MRKT_RPRTS_SMTP_USER: ${{ secrets.MRKT_RPRTS_SMTP_USER }}
@@ -74,7 +75,7 @@ jobs:
           MRKT_RPRTS_MAIL_TO: ${{ secrets.MRKT_RPRTS_MAIL_TO }}
         run: python send_fxreport.py
 
-      - name: Commit refreshed FX state artifacts back to main
+      - name: Commit refreshed FX state and assurance artifacts back to main
         if: success()
         run: |
           git config user.name "github-actions[bot]"
@@ -84,10 +85,17 @@ jobs:
             output/fx_valuation_history.csv \
             output/fx_state_refresh_manifest.json \
             output/fx_carry_snapshot.csv \
-            output/fx_risk_bucket_snapshot.json || true
+            output/fx_risk_bucket_snapshot.json \
+            output/*_release_assurance.json \
+            output/*_transport_receipt.json \
+            output/*_delivery_manifest.txt \
+            output/*_clean.md \
+            output/*_delivery.html \
+            output/*.pdf \
+            output/*_equity_curve.png || true
           if git diff --cached --quiet; then
-            echo "No refreshed FX state artifacts to commit."
+            echo "No refreshed FX state or assurance artifacts to commit."
             exit 0
           fi
-          git commit -m "Persist refreshed Weekly FX state and carry artifacts [skip ci]"
+          git commit -m "Persist governed Weekly FX lab package [skip ci]"
           git push origin HEAD:main
