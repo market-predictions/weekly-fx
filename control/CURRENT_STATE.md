@@ -1,143 +1,124 @@
 # FX Review OS — Current State
 
-## Snapshot date
-2026-05-05
+## Snapshot
+
+```text
+date=2026-08-07
+repository=market-predictions/weekly-fx
+role=NON_PRODUCTION_LAB
+portfolio_control_mode=VALIDATION
+canonical_shared_control=market-predictions/control-plane
+shared_controller=portfolio_control
+project_governance_maturity=LEVEL_3_LAB_ENFORCED
+production_target=market-predictions/daily-fx
+production_promotion_from_this_repo=FAIL_CLOSED
+```
 
 ## What this repository currently is
 
-This repository is the **non-production lab clone** of the original FX production system.
+`weekly-fx` is the **non-production FX lab and validation repository**. It is the safe experimentation surface for report logic, state handling, alpha-discipline, technical overlays, diagnostics and candidate promotion preparation.
 
-It contains:
-- the mirrored FX production prompt and workflow files from `daily-fx`
-- the existing archived outputs and explicit state artifacts in `output/`
-- the same technical overlay and mark-to-market portfolio engine concept used by production
-- a lab-only analytics and rule-testing layer for non-destructive QA and tool evaluation
-- a new alpha-discipline layer for carry visibility, USD cash discipline, true risk buckets, and no-action proof
+It must not be treated as production `daily-fx`, and it cannot certify its own production promotion.
 
-## Current strengths
+The current cross-project operating architecture is:
 
-- Strong determinism and anti-drift framing.
-- Clear client-grade presentation contract.
-- Explicit state-file awareness already exists.
-- Explicit technical-overlay contract already exists.
-- Explicit mark-to-market portfolio engine concept already exists.
-- Strong fail-loud delivery discipline.
-- A safe lab surface exists for testing tooling without changing `daily-fx` first.
-- A lab-only QuantStats diagnostics layer exists for portfolio QA.
-- A lab-only vectorbt rule sandbox exists for portfolio-level overlay exploration.
-- FX carry is now visible via `output/fx_carry_snapshot.csv`.
-- True macro concentration is now visible via `output/fx_risk_bucket_snapshot.json`.
-- Future reports are hardened by `prompts/FX_ALPHA_DISCIPLINE_ADDENDUM.md`.
-- The send workflow now includes pre-send alpha-discipline validation through `tools/validate_fx_action_discipline.py`.
+```text
+principal
+  |
+  v
+portfolio_control
+  |-- implementation_operations
+  `-- governance_release_assurance
+```
 
-## Current weaknesses
+For this project, `portfolio_control` reconstructs state, protects scope, routes ordinary technical work and consolidates status. The LEVEL 3 project assurance contract remains independently authoritative for candidate assurance. Production promotion requires a target-repository candidate and target-repository assurance in `daily-fx`.
 
-### 1. Prompt monolith still exists
-Even though FX is more mature than ETF on explicit state, the prompt still mixes:
-- strategy logic
-- state authority rules
-- technical overlay handling
-- valuation logic
-- output rules
-- workflow orchestration
-- delivery completion logic
+## Current operating strengths
 
-The new alpha-discipline layer is currently implemented as an addendum rather than a full split of the monolith. That is safer, but the longer-term direction is still to separate the decision framework, input/state contract, output contract, and runbook more cleanly.
+- Strong deterministic and anti-drift framing.
+- Explicit lab-versus-production boundary.
+- LEVEL 3 lab release-assurance gate with fail-closed production-promotion semantics.
+- Client-grade report presentation contract.
+- Explicit state-file and technical-overlay handling.
+- Mark-to-market portfolio engine concept.
+- Alpha-discipline layer covering carry visibility, USD cash discipline, risk buckets and no-action proof.
+- Pre-send alpha-discipline validation in the lab workflow.
+- Repo-native state-refresh path and automatic technical-overlay refresh.
+- QuantStats/vectorbt experimentation remains separated from client-facing authority.
 
-### 2. Carry source is still a proxy
-The carry layer currently uses policy-rate proxy inputs in `config/fx_policy_rate_proxies.json`.
+## Current evidence and live state
 
-This is useful for visibility and discipline, but it is not the same as actual broker rollover, tom-next, or forward-point carry. Future work should replace or supplement the proxy with a more direct carry source when available.
+Latest observed `main` at this reconciliation:
 
-### 3. Authority rules need to stay visible
-FX now has more explicit state files than before, but that only helps if future sessions can quickly see:
-- which file is authoritative for implementation facts
-- which file is authoritative for strategy intent
-- which files are estimated carry/risk diagnostics
-- what happens if these disagree
+```text
+main_sha=3f25ff6a0cb24187655f3b052f764b0377836ff7
+latest_change=Update FX technical overlay [skip ci]
+latest_change_time_utc=2026-08-07T07:36:55Z
+```
 
-### 4. Lab / production boundary remains important
-`weekly-fx` is still a lab/safe experimentation repo. Changes should not be assumed production-approved for `daily-fx` until tested and intentionally promoted.
+The technical overlay is therefore live operational input that may refresh without implying report completion, release approval or production promotion.
 
-## Target architecture
+The current governance baseline is later and more authoritative than the May-era narrative previously held in this file:
 
-### ChatGPT side
-- One dedicated ChatGPT Project called **FX Review OS**.
-- Project instructions that reinforce the operating model.
-- Minimal stable bootstrap context in the ChatGPT Project, with GitHub as the live source of truth for changing prompt, script, workflow, output, and state files.
+- `control/PROJECT_GOVERNANCE_BOOTSTRAP.md` points to the canonical private control plane;
+- `control/FX_RELEASE_ASSURANCE_CONTRACT_V1.md` defines the LEVEL 3 lab assurance boundary;
+- `weekly-fx` cannot issue production-promotion PASS;
+- any promotion to `daily-fx` requires independent target-repository assurance there.
 
-### GitHub side
-- GitHub remains the source of truth for prompt, scripts, workflows, outputs, and control docs.
-- Existing FX state files remain part of the operating core.
-- The control layer reduces restart friction and architecture drift.
-- `weekly-fx` remains the experimentation surface for tool integrations before production promotion.
-- Carry and risk-bucket snapshots are now part of the input/state contract.
+## Current weaknesses / open validation work
 
-### Delivery side
-- Delivery remains in `send_fxreport.py` plus GitHub Actions.
-- The prompt keeps decision standards and output requirements, while scripts/workflows own more execution discipline.
-- The send workflow now gates client-facing delivery on alpha-discipline validation.
+### 1. Fresh compliant report validation still matters
 
-## Immediate priorities
+The alpha-discipline implementation exists, but the lab still needs evidence from a fresh compliant report showing that the required carry, USD-cash, risk-bucket and no-action blocks are correctly produced and validated.
 
-### Priority A — validate the alpha-discipline layer
-Completed in this step:
-- add `prompts/FX_ALPHA_DISCIPLINE_ADDENDUM.md`
-- add `config/fx_policy_rate_proxies.json`
-- add `output/fx_carry_snapshot.csv`
-- add `output/fx_risk_bucket_snapshot.json`
-- add `tools/write_fx_carry_and_risk_snapshots.py`
-- add `tools/apply_fx_carry_accrual.py`
-- add `tools/validate_fx_action_discipline.py`
-- update refresh/send workflows to generate and validate the new artifacts
+### 2. Carry remains a proxy unless better evidence is supplied
 
-Planned next:
-- generate the next FX report with the new required blocks
-- verify the send workflow fails loud if the blocks are missing
-- verify the send workflow passes once the new report includes the blocks
+`config/fx_policy_rate_proxies.json` is useful for estimated carry discipline but is not broker rollover, tom-next or forward-point carry. It must not be represented as realized carry.
 
-### Priority B — validate carry quality
-Planned next:
-- compare policy-rate proxy carry with any available broker rollover, forward points, or tom-next data
-- avoid presenting proxy carry as guaranteed realized carry
-- decide whether carry should remain a report estimate or become full NAV accrual in production
+### 3. Prompt/state/runbook responsibilities remain partly monolithic
 
-### Priority C — continue lab analytics validation
-Planned next:
-- compare QuantStats diagnostics against Section 7 / `fx_valuation_history.csv`
-- inspect vectorbt sandbox results for signal quality, overfitting risk, and practical relevance
-- keep lab-only analytics out of client-facing delivery unless explicitly promoted
+The longer-term architecture should keep decision framework, input/state contract, output contract, operational runbook and governance/release assurance distinct. Refactoring is a maturity improvement, not a prerequisite for every lab cycle.
 
-### Priority D — make FX boundaries more explicit
-Still planned:
-- extract the state/input contract more cleanly from `fx.txt`
-- extract the output contract more cleanly from `fx.txt`
-- reduce unnecessary runbook logic inside the prompt where scripts are better owners
+### 4. Lab analytics remain non-production evidence
 
-## Recommended session start sequence
+QuantStats/vectorbt outputs are exploratory diagnostics. They do not acquire client-facing or production authority merely because a lab run succeeds.
 
-For any future weekly-fx architecture or integration session:
-1. read `control/SYSTEM_INDEX.md`
-2. read this file
-3. read `control/NEXT_ACTIONS.md`
-4. only then open the specific execution file relevant to the task
+## Current controller objective
 
-## Current role split
+```text
+objective=VALIDATE_LEVEL_3_LAB_REPORT_PATH_WITHOUT_CROSSING_DAILY_FX_PRODUCTION_BOUNDARY
+principal_decision_required_now=false
+```
 
-### Manual by user
-- keep production `daily-fx` protected until lab changes are validated
-- decide when the alpha-discipline layer is ready for production promotion
-- provide broker rollover / forward-point data if available
+The controller should autonomously:
 
-### Can be done by assistant
-- update GitHub control files
-- refactor prompts
-- review and improve scripts/workflows
-- strengthen state authority rules
-- generate test reports using the new alpha-discipline requirements
-- inspect workflow failures and delivery receipts
-- prepare promotion PRs from weekly-fx to daily-fx when approved
+1. keep state and governance records synchronized;
+2. generate/validate bounded lab evidence when appropriate;
+3. distinguish state-refresh activity from report/release completion;
+4. route implementation work below principal level;
+5. require independent lab assurance for consequential candidate changes;
+6. escalate production promotion only when a concrete `daily-fx` target candidate and target assurance make the decision actionable.
+
+## Authority boundary
+
+The following remain outside routine controller authority unless the applicable project contract explicitly permits them:
+
+- client-facing production delivery from the lab;
+- production promotion to `daily-fx`;
+- weakening the LEVEL 3 assurance gate;
+- representing proxy carry as realized broker carry;
+- any irreversible external action reserved to the principal or production repository.
+
+## Recommended session start
+
+The canonical project prompt invocation is sufficient:
+
+```text
+Start this assignment by reading and applying the canonical project operating method in `market-predictions/control-plane`.
+```
+
+Because `weekly-fx` is enrolled in the reporting-family portfolio-control pilot, the shared control plane supplies portfolio state and controller routing before project-local implementation work begins.
 
 ## Current status label
 
-**FX alpha-discipline layer implemented in weekly-fx — carry visibility, USD cash contradiction checks, risk-bucket exposure, carry-accrual scaffolding, and pre-send validation now exist in the lab repo. Next step is to generate a fresh report that satisfies the new required blocks and verify the workflow gate.**
+**Weekly FX is a LEVEL 3 non-production validation lab under portfolio control. The immediate work is fresh compliant-report validation and state/architecture hardening; no principal decision or production promotion is currently actionable.**
