@@ -1,204 +1,105 @@
 # FX Review OS — Next Actions
 
-## Status legend
-- `[USER]` = must be done manually by you in UI or external systems
-- `[ASSISTANT]` = I can do directly in chat/repo
-- `[JOINT]` = I prepare, you apply/approve
+## Control mode
 
----
+```text
+date=2026-08-07
+portfolio_control_mode=VALIDATION
+principal_decision_required_now=false
+production_repo=market-predictions/daily-fx
+```
 
-## Phase 0 — keep the lab clone role explicit
+The reporting-family `portfolio_control` agent owns routine coordination. The principal should not be asked to direct separate implementation and assurance agents or repeat repository context.
 
-### 0. Treat `weekly-fx` as lab-first, not production-first
-- Owner: `[JOINT]`
-- Action:
-  - use `weekly-fx` for tool integration, diagnostics, workflow experiments, and alpha-discipline hardening first
-  - keep `daily-fx` protected as the production repo until changes are validated
-- Done when: lab-only changes are documented and not confused with production behavior.
+## P1 — validate a fresh compliant lab report
 
-### 0A. Keep lab delivery settings safe
-- Owner: `[USER]`
-- Action:
-  - do **not** copy production mail recipients and delivery secrets blindly into `weekly-fx`
-  - prefer test recipients, disabled send settings, or separate lab mail credentials
-- Done when: lab workflows cannot accidentally send client-facing reports.
+Owner: `portfolio_control -> implementation_operations`, followed by independent `governance_release_assurance` where required.
 
----
+1. Start from the canonical control-plane invocation and current live state.
+2. Generate a fresh **lab** Weekly FX report that obeys `prompts/FX_ALPHA_DISCIPLINE_ADDENDUM.md`.
+3. Require the report to include the applicable:
+   - FX carry dashboard;
+   - USD cash contradiction check;
+   - risk-bucket exposure;
+   - no-action override table when no rebalance occurs.
+4. Validate with `tools/validate_fx_action_discipline.py` and the existing render/report gates.
+5. Keep any delivery in the safe lab contract; do not infer client-facing production authority.
+6. Record exact evidence and failure reason rather than claiming completion from report generation alone.
 
-## Phase 1 — establish the working environment
+Done when a fresh compliant lab candidate has independently interpretable pass/fail evidence.
 
-### 1. Create / maintain the ChatGPT Project
-- Owner: `[USER]`
-- Action: keep the ChatGPT Project named **FX Review OS** available as the recurring workbench.
-- Done when: the project exists and future work uses the live GitHub files as source of truth.
+## P2 — preserve fail-closed lab / production separation
 
-### 2. Keep project instructions aligned
-- Owner: `[USER]`
-- Source file: `control/CHATGPT_PROJECT_INSTRUCTIONS.md`
-- Action: keep Project settings aligned with the repo operating model.
-- Done when: the FX project has its own instructions separate from global custom instructions.
+Owner: `portfolio_control` and `governance_release_assurance`.
 
-### 3. Use the lean bootstrap upload model
-- Owner: `[USER]`
-- Primary upload:
-  - `control/PROJECT_BOOTSTRAP.md`
-- Action:
-  - upload only the bootstrap file as the default stable project context
-  - do **not** upload changing repo files as standard project context unless there is a specific task-driven need
-- Done when: future sessions read the live repo files from GitHub instead of relying on stale uploaded copies.
+1. Preserve `weekly-fx` as non-production.
+2. Do not let a successful lab run issue production-promotion PASS.
+3. If a future promotion is warranted, prepare a concrete `daily-fx` target candidate.
+4. Require independent target-repository assurance in `daily-fx` before any promotion can be represented as approved.
+5. Escalate to the principal only when the target candidate and evidence make a consequential choice actionable.
 
----
+## P3 — improve carry evidence without overstating it
 
-## Phase 2 — make state authority obvious and durable
+Owner: `implementation_operations`.
 
-### 4. Keep using the control layer at the start of each FX session
-- Owner: `[JOINT]`
-- Action: every meaningful FX architecture, debugging, prompt, state, workflow, or delivery session starts with:
-  1. `control/SYSTEM_INDEX.md`
-  2. `control/CURRENT_STATE.md`
-  3. `control/NEXT_ACTIONS.md`
-  4. only then the minimum relevant execution file(s)
-- Done when: sessions no longer need to rediscover how the system is organized.
+1. Continue to label policy-rate proxy carry as estimated/proxy carry.
+2. Compare with broker rollover, tom-next or forward-point data only when a reliable source is available.
+3. Do not block ordinary lab report validation merely because direct broker carry is not yet available, unless the report would otherwise misstate the value.
+4. Treat production NAV accrual based on a stronger carry source as a separate promotion decision.
 
-### 5. Keep the four-layer model explicit
-- Owner: `[ASSISTANT]`
-- Action: preserve and reinforce the separation between:
-  1. decision framework
-  2. input/state contract
-  3. output contract
-  4. operational runbook
-- Done when: future changes and reviews are consistently framed against these four layers.
+## P4 — continue bounded analytics validation
 
-### 6. Validate stale-data handling
-- Owner: `[ASSISTANT]`
-- Action: review handling of:
-  - stale technical overlay files
-  - stale valuation data
-  - stale portfolio values
-  - stale carry snapshots
-  - stale risk-bucket snapshots
-  - stale report artifacts
-- Done when: stale inputs cannot silently flatten, distort, or misstate the portfolio or report.
+Owner: `implementation_operations`.
 
-### 6A. Keep the repo-native refresh trigger path authoritative
-- Owner: `[ASSISTANT]`
-- Action:
-  - use `control/run_queue/` as the fallback trigger surface when ChatGPT cannot dispatch GitHub Actions directly
-  - keep `.github/workflows/prep-from-trigger.yml` as the queue bridge
-  - keep `.github/workflows/refresh-fx-state.yml` as the canonical refresh workflow
-  - verify that ChatGPT still checks workflow success plus refreshed files on `main` before continuing
-- Done when: the prep-first flow works through either direct dispatch or a committed trigger file without changing the verification standard.
+- QuantStats and vectorbt remain lab diagnostics.
+- Run them when they answer a defined validation question.
+- Separate active strategy improvement from inactivity/no-trade effects.
+- Archive weak or noisy findings rather than automatically promoting them into report logic.
+- No principal interruption is required for ordinary lab experimentation.
 
----
+## P5 — architecture hardening when justified by active work
 
-## Phase 3 — validate the FX alpha-discipline layer
+Owner: `portfolio_control`.
 
-### 7. Generate the next report with required alpha blocks
-- Owner: `[ASSISTANT]`
-- Action:
-  - read `fx.txt`
-  - read `prompts/FX_ALPHA_DISCIPLINE_ADDENDUM.md`
-  - use `output/fx_carry_snapshot.csv`
-  - use `output/fx_risk_bucket_snapshot.json`
-  - include the required blocks:
-    - `FX carry dashboard`
-    - `USD cash contradiction check`
-    - `Risk-bucket exposure`
-    - `No-action override table` if no rebalance occurs
-- Done when: the next report passes `tools/validate_fx_action_discipline.py`.
+Continue separating:
 
-### 8. Verify the pre-send validator fails loud when blocks are missing
-- Owner: `[ASSISTANT]`
-- Action:
-  - intentionally inspect the latest pre-alpha report or a test report without required blocks
-  - confirm `tools/validate_fx_action_discipline.py` rejects it
-- Done when: missing carry/cash/risk/no-action blocks cannot pass send validation.
+1. decision framework;
+2. input/state contract;
+3. output contract;
+4. operational runbook;
+5. governance/release assurance.
 
-### 9. Verify the send workflow with a compliant report
-- Owner: `[JOINT]`
-- Action:
-  - publish a fresh compliant report
-  - inspect the GitHub Actions run
-  - verify state refresh, carry accrual, carry/risk snapshot generation, alpha validation, render validation, email send, and artifact persistence
-- Done when: a compliant report has a real delivery receipt or failure reason.
+Do not create refactoring work merely for architectural neatness. Prefer changes that remove an observed ambiguity, recurrent failure or release risk.
 
-### 10. Improve carry quality beyond policy-rate proxy
-- Owner: `[JOINT]`
-- Action:
-  - compare `config/fx_policy_rate_proxies.json` against broker rollover, tom-next, or forward-point data if available
-  - decide whether to keep proxy carry as an estimate or replace it with a direct carry source
-- Done when: the report clearly distinguishes estimated carry from realized/broker carry.
+## State-refresh discipline
 
----
+The automatic technical-overlay refresh on `main` is operational input maintenance only.
 
-## Phase 4 — continue lab analytics validation
+A refresh commit does **not** mean:
 
-### 11. Run the QuantStats diagnostics workflow
-- Owner: `[JOINT]`
-- Action:
-  - use `.github/workflows/lab-quantstats-diagnostics.yml` manually
-  - inspect the generated artifact bundle from `lab_outputs/quantstats/`
-  - compare the diagnostics to Section 7 and to `output/fx_valuation_history.csv`
-- Done when: the lab diagnostics layer is validated as a useful QA aid.
+- a new Weekly FX report exists;
+- the report has passed assurance;
+- the report has been sent;
+- production has been promoted;
+- the principal needs to decide anything.
 
-### 12. Run the vectorbt rule sandbox workflow
-- Owner: `[JOINT]`
-- Action:
-  - use `.github/workflows/lab-vectorbt-rule-sandbox.yml` manually
-  - inspect the generated artifact bundle from `lab_outputs/vectorbt/`
-  - compare the top sandbox rules against baseline hold
-  - assess whether any result is likely short-history noise rather than a durable signal
-- Done when: the vectorbt sandbox is validated as useful exploration rather than premature production logic.
+The controller should keep those states separate in every brief.
 
-### 13. Re-run the sleeve-level vectorbt sandbox with activity separation
-- Owner: `[JOINT]`
-- Action:
-  - use `.github/workflows/lab-vectorbt-sleeve-sandbox.yml` manually
-  - inspect `fx_sleeve_vectorbt_best_active_by_sleeve.csv` and `fx_sleeve_vectorbt_best_inactive_by_sleeve.csv`
-  - verify that no-trade / low-exposure rules no longer masquerade as active winners
-- Done when: sleeve-level results are interpretable without conflating active improvement and defensive inactivity.
+## Principal escalation rule
 
----
+Escalate only if all are true:
 
-## Phase 5 — tighten boundaries without changing behavior
+1. a genuine unresolved choice remains;
+2. existing policy, evidence, safe defaults and reversible lab work cannot responsibly resolve it;
+3. the consequence is material; and
+4. the principal can act on the decision now.
 
-### 14. Extract the state/input contract more explicitly from production logic
-- Owner: `[ASSISTANT]`
-- Action:
-  - clarify what is authoritative for implementation facts
-  - clarify what is authoritative for strategy intent
-  - clarify what is diagnostic/proxy input
-  - clarify deterministic conflict resolution between the files
-- Done when: the state model can be understood without rereading the whole monolith.
+Likely future principal item: production promotion after a concrete `daily-fx` candidate and independent target assurance exist. Until then it is **not** an actionable decision.
 
-### 15. Review `send_fxreport.py` against the new architecture
-- Owner: `[ASSISTANT]`
-- Action: identify which responsibilities belong in the script and which should stop living in the prompt.
-- Focus areas:
-  - manifest/receipt logic
-  - HTML/PDF rendering
-  - equity-curve handling
-  - stale-report detection
-  - portfolio-valuation refresh logic
-  - carry/risk artifact display support
+## Current next gate
 
-### 16. Review the GitHub Actions workflow
-- Owner: `[ASSISTANT]`
-- Action: confirm that workflow responsibilities stay limited to orchestration, secrets, execution, validation, and delivery.
-- Done when: workflow logic is clearly operational, not decision-making.
-
----
-
-## Suggested immediate next move
-
-The best next move after this update is:
-1. generate a fresh Weekly FX Review that obeys `FX_ALPHA_DISCIPLINE_ADDENDUM.md`
-2. confirm it includes carry, USD-cash contradiction, risk-bucket, and no-action proof blocks
-3. let the send workflow validate it
-4. only after a clean lab run, decide whether to promote the alpha-discipline layer to `daily-fx`
-
----
-
-## Current checkpoint
-
-**FX alpha-discipline layer implemented in weekly-fx — carry visibility, USD cash contradiction checks, true risk-bucket exposure, carry-accrual scaffolding, and pre-send validation now exist. Next step is to generate and validate a compliant fresh report.**
+```text
+NEXT_GATE=FRESH_COMPLIANT_WEEKLY_FX_LAB_REPORT_VALIDATION
+OWNER=PORTFOLIO_CONTROL
+PRINCIPAL_ACTION=NONE
+```
