@@ -1,7 +1,7 @@
 # today_prediction_summary
 
 prediction_score_version: v5.5_prediction_quality_v2
-prediction_reference_timestamp: 2026-08-10 07:59:37
+prediction_reference_timestamp: 2026-08-10 14:03:31
 snapshot_date: 2026-08-10
 prediction_top_n: 8
 
@@ -14,19 +14,19 @@ prediction_top_n: 8
 - shadow_watchlist_rows_in_prediction_snapshot: 1
 
 ## ranking
-1. USDCAD | side=LONG | grade10=4.87 | grade100=48.7 | band=C | entry=1.3944 | sl=1.3934 | tp1=1.3958 | tp2=1.3968
-2. USDCHF | side=SHORT | grade10=4.36 | grade100=43.6 | band=C | entry=0.8073 | sl=0.8079 | tp1=0.8065 | tp2=0.8059
-3. NZDCAD | side=LONG | grade10=4.09 | grade100=40.9 | band=C | entry=0.822 | sl=0.8204 | tp1=0.8239 | tp2=0.8253
-4. EURGBP | side=SHORT | grade10=3.17 | grade100=31.7 | band=D | entry=0.8565 | sl=0.858 | tp1=0.8547 | tp2=0.8533
-5. GBPUSD | side=LONG | grade10=2.49 | grade100=24.9 | band=E | entry=1.3496 | sl=1.3479 | tp1=1.3517 | tp2=1.3533
-6. EURUSD | side=SHORT | grade10=2.0 | grade100=20.0 | band=E | entry=1.1561 | sl=1.157 | tp1=1.155 | tp2=1.1542
-7. AUDUSD | side=SHORT | grade10=2.0 | grade100=20.0 | band=E | entry=0.707 | sl=0.7076 | tp1=0.7064 | tp2=0.7058
-8. EURCHF | side=SHORT | grade10=2.0 | grade100=20.0 | band=E | entry=0.9332 | sl=0.934 | tp1=0.9323 | tp2=0.9316
-9. AUDNZD | side=SHORT | grade10=1.91 | grade100=19.1 | band=E | entry=1.1993 | sl=1.2003 | tp1=1.1982 | tp2=1.1973
-10. GBPCAD | side=LONG | grade10=1.85 | grade100=18.5 | band=E | entry=1.8818 | sl=1.8795 | tp1=1.8847 | tp2=1.8869
-11. USDJPY | side=SHORT | grade10=0.64 | grade100=6.4 | band=E | entry=158.511 | sl=158.749 | tp1=158.221 | tp2=157.995
-12. EURJPY | side=SHORT | grade10=0.42 | grade100=4.2 | band=E | entry=183.239 | sl=183.685 | tp1=182.697 | tp2=182.275
-13. AUDCHF | side=SHORT | grade10=0.11 | grade100=1.1 | band=E | entry=0.5709 | sl=0.5713 | tp1=0.5703 | tp2=0.5699
-14. CADJPY | side=SHORT | grade10=0.0 | grade100=0.0 | band=E | entry=113.672 | sl=113.875 | tp1=113.425 | tp2=113.233
-15. EURAUD | side=LONG | grade10=0.0 | grade100=0.0 | band=E | entry=1.635 | sl=1.6315 | tp1=1.6391 | tp2=1.6423
-16. GBPJPY | side=SHORT | grade10=0.0 | grade100=0.0 | band=E | entry=213.917 | sl=214.274 | tp1=213.484 | tp2=213.148
+1. AUDUSD | side=SHORT | grade10=4.41 | grade100=44.1 | band=C | entry=0.7056 | sl=0.7061 | tp1=0.7049 | tp2=0.7044
+2. GBPUSD | side=LONG | grade10=3.7 | grade100=37.0 | band=D | entry=1.3499 | sl=1.3482 | tp1=1.352 | tp2=1.3536
+3. USDCHF | side=SHORT | grade10=2.24 | grade100=22.4 | band=E | entry=0.8099 | sl=0.8105 | tp1=0.8091 | tp2=0.8085
+4. EURUSD | side=SHORT | grade10=2.11 | grade100=21.1 | band=E | entry=1.1545 | sl=1.1554 | tp1=1.1534 | tp2=1.1525
+5. GBPCAD | side=LONG | grade10=1.97 | grade100=19.7 | band=E | entry=1.8838 | sl=1.8815 | tp1=1.8867 | tp2=1.8889
+6. AUDNZD | side=SHORT | grade10=1.96 | grade100=19.6 | band=E | entry=1.1996 | sl=1.2005 | tp1=1.1984 | tp2=1.1975
+7. NZDCAD | side=LONG | grade10=1.92 | grade100=19.2 | band=E | entry=0.8206 | sl=0.8196 | tp1=0.8219 | tp2=0.8228
+8. EURAUD | side=LONG | grade10=1.66 | grade100=16.6 | band=E | entry=1.6361 | sl=1.634 | tp1=1.6386 | tp2=1.6406
+9. USDCAD | side=LONG | grade10=0.84 | grade100=8.4 | band=E | entry=1.3952 | sl=1.3941 | tp1=1.3965 | tp2=1.3976
+10. USDJPY | side=SHORT | grade10=0.69 | grade100=6.9 | band=E | entry=159.051 | sl=159.279 | tp1=158.775 | tp2=158.56
+11. EURJPY | side=SHORT | grade10=0.69 | grade100=6.9 | band=E | entry=183.576 | sl=183.864 | tp1=183.227 | tp2=182.955
+12. EURCHF | side=SHORT | grade10=0.3 | grade100=3.0 | band=E | entry=0.9351 | sl=0.9359 | tp1=0.9343 | tp2=0.9336
+13. AUDCHF | side=SHORT | grade10=0.18 | grade100=1.8 | band=E | entry=0.5716 | sl=0.572 | tp1=0.571 | tp2=0.5706
+14. EURGBP | side=SHORT | grade10=0.0 | grade100=0.0 | band=E | entry=0.8549 | sl=0.856 | tp1=0.8537 | tp2=0.8526
+15. GBPJPY | side=SHORT | grade10=0.0 | grade100=0.0 | band=E | entry=214.698 | sl=214.996 | tp1=214.336 | tp2=214.055
+16. CADJPY | side=SHORT | grade10=0.0 | grade100=0.0 | band=E | entry=113.981 | sl=114.159 | tp1=113.765 | tp2=113.597
