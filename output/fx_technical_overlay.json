@@ -1,5 +1,5 @@
 {
-  "as_of_utc": "2026-08-16T13:11:03Z",
+  "as_of_utc": "2026-08-17T07:10:07Z",
   "anchor_currency": "USD",
   "source": "Twelve Data API",
   "rate_limit_config": {
@@ -20,14 +20,14 @@
       "Technical_Score_0_4": 2.7,
       "Technical_Verdict": "positive",
       "Evidence": {
-        "latest_close": 1.15678,
-        "d1_ema20": 1.152541,
-        "d1_ema50": 1.149909,
-        "w1_ema13": 1.152245,
-        "w1_ema26": 1.156068,
+        "latest_close": 1.15967,
+        "d1_ema20": 1.153209,
+        "d1_ema50": 1.150287,
+        "w1_ema13": 1.153291,
+        "w1_ema26": 1.156326,
         "recent_d1_median_abs_pct_change": 0.001476,
         "daily_bars_used": 260,
-        "weekly_bars_built": 38
+        "weekly_bars_built": 39
       }
     },
     {
@@ -42,14 +42,14 @@
       "Technical_Score_0_4": 3.85,
       "Technical_Verdict": "strong positive",
       "Evidence": {
-        "latest_close": 1.35308,
-        "d1_ema20": 1.347648,
-        "d1_ema50": 1.343014,
-        "w1_ema13": 1.342089,
-        "w1_ema26": 1.340446,
-        "recent_d1_median_abs_pct_change": 0.000896,
+        "latest_close": 1.3559,
+        "d1_ema20": 1.348477,
+        "d1_ema50": 1.343539,
+        "w1_ema13": 1.344123,
+        "w1_ema26": 1.341625,
+        "recent_d1_median_abs_pct_change": 0.001016,
         "daily_bars_used": 260,
-        "weekly_bars_built": 38
+        "weekly_bars_built": 39
       }
     },
     {
@@ -64,63 +64,19 @@
       "Technical_Score_0_4": 3.85,
       "Technical_Verdict": "strong positive",
       "Evidence": {
-        "latest_close": 0.70844,
-        "d1_ema20": 0.704772,
-        "d1_ema50": 0.702424,
-        "w1_ema13": 0.702835,
-        "w1_ema26": 0.699283,
+        "latest_close": 0.71231,
+        "d1_ema20": 0.705511,
+        "d1_ema50": 0.702821,
+        "w1_ema13": 0.704218,
+        "w1_ema26": 0.700264,
         "recent_d1_median_abs_pct_change": 0.001686,
         "daily_bars_used": 260,
-        "weekly_bars_built": 38
+        "weekly_bars_built": 39
       }
     },
     {
       "pair": "NZDUSD",
       "symbol": "NZD/USD",
-      "W1_Bias": "bullish",
-      "D1_Bias": "bullish",
-      "Alignment": "aligned bullish",
-      "Pivot_Regime": "neutral",
-      "Pivot_Zone_Fit": "around pivot",
-      "Pivot_Conflict": false,
-      "Technical_Score_0_4": 3.65,
-      "Technical_Verdict": "strong positive",
-      "Evidence": {
-        "latest_close": 0.58916,
-        "d1_ema20": 0.586696,
-        "d1_ema50": 0.583476,
-        "w1_ema13": 0.5834,
-        "w1_ema26": 0.582864,
-        "recent_d1_median_abs_pct_change": 0.001859,
-        "daily_bars_used": 260,
-        "weekly_bars_built": 38
-      }
-    },
-    {
-      "pair": "USDJPY",
-      "symbol": "USD/JPY",
-      "W1_Bias": "mild bullish",
-      "D1_Bias": "bearish",
-      "Alignment": "mixed",
-      "Pivot_Regime": "bullish",
-      "Pivot_Zone_Fit": "above pivot",
-      "Pivot_Conflict": false,
-      "Technical_Score_0_4": 2.2,
-      "Technical_Verdict": "mixed",
-      "Evidence": {
-        "latest_close": 159.32331,
-        "d1_ema20": 159.457219,
-        "d1_ema50": 160.251522,
-        "w1_ema13": 159.891461,
-        "w1_ema26": 159.301885,
-        "recent_d1_median_abs_pct_change": 0.00091,
-        "daily_bars_used": 260,
-        "weekly_bars_built": 38
-      }
-    },
-    {
-      "pair": "USDCHF",
-      "symbol": "USD/CHF",
       "W1_Bias": "bullish",
       "D1_Bias": "bullish",
       "Alignment": "aligned bullish",
@@ -130,14 +86,58 @@
       "Technical_Score_0_4": 3.85,
       "Technical_Verdict": "strong positive",
       "Evidence": {
-        "latest_close": 0.81362,
-        "d1_ema20": 0.811434,
-        "d1_ema50": 0.808876,
-        "w1_ema13": 0.804234,
-        "w1_ema26": 0.799116,
-        "recent_d1_median_abs_pct_change": 0.001749,
+        "latest_close": 0.59219,
+        "d1_ema20": 0.58722,
+        "d1_ema50": 0.583818,
+        "w1_ema13": 0.584657,
+        "w1_ema26": 0.583555,
+        "recent_d1_median_abs_pct_change": 0.001859,
         "daily_bars_used": 260,
-        "weekly_bars_built": 38
+        "weekly_bars_built": 39
+      }
+    },
+    {
+      "pair": "USDJPY",
+      "symbol": "USD/JPY",
+      "W1_Bias": "neutral",
+      "D1_Bias": "bearish",
+      "Alignment": "mixed",
+      "Pivot_Regime": "neutral",
+      "Pivot_Zone_Fit": "around pivot",
+      "Pivot_Conflict": false,
+      "Technical_Score_0_4": 1.5,
+      "Technical_Verdict": "mixed",
+      "Evidence": {
+        "latest_close": 158.92872,
+        "d1_ema20": 159.406593,
+        "d1_ema50": 160.199491,
+        "w1_ema13": 159.75351,
+        "w1_ema26": 159.27401,
+        "recent_d1_median_abs_pct_change": 0.00114,
+        "daily_bars_used": 260,
+        "weekly_bars_built": 39
+      }
+    },
+    {
+      "pair": "USDCHF",
+      "symbol": "USD/CHF",
+      "W1_Bias": "bullish",
+      "D1_Bias": "mild bullish",
+      "Alignment": "aligned bullish",
+      "Pivot_Regime": "neutral",
+      "Pivot_Zone_Fit": "around pivot",
+      "Pivot_Conflict": false,
+      "Technical_Score_0_4": 3.45,
+      "Technical_Verdict": "strong positive",
+      "Evidence": {
+        "latest_close": 0.81066,
+        "d1_ema20": 0.81124,
+        "d1_ema50": 0.808893,
+        "w1_ema13": 0.80498,
+        "w1_ema26": 0.799875,
+        "recent_d1_median_abs_pct_change": 0.00191,
+        "daily_bars_used": 260,
+        "weekly_bars_built": 39
       }
     },
     {
@@ -152,14 +152,14 @@
       "Technical_Score_0_4": 1.3,
       "Technical_Verdict": "negative",
       "Evidence": {
-        "latest_close": 1.38793,
-        "d1_ema20": 1.396542,
-        "d1_ema50": 1.401103,
-        "w1_ema13": 1.397732,
-        "w1_ema26": 1.392712,
+        "latest_close": 1.38597,
+        "d1_ema20": 1.395505,
+        "d1_ema50": 1.400497,
+        "w1_ema13": 1.396009,
+        "w1_ema26": 1.392189,
         "recent_d1_median_abs_pct_change": 0.000811,
         "daily_bars_used": 260,
-        "weekly_bars_built": 38
+        "weekly_bars_built": 39
       }
     },
     {
@@ -174,14 +174,14 @@
       "Technical_Score_0_4": 0.15,
       "Technical_Verdict": "strong negative",
       "Evidence": {
-        "latest_close": 17.02365,
-        "d1_ema20": 17.177163,
-        "d1_ema50": 17.297054,
-        "w1_ema13": 17.348157,
-        "w1_ema26": 17.466263,
+        "latest_close": 17.0025,
+        "d1_ema20": 17.15872,
+        "d1_ema50": 17.284708,
+        "w1_ema13": 17.296207,
+        "w1_ema26": 17.430471,
         "recent_d1_median_abs_pct_change": 0.000753,
         "daily_bars_used": 260,
-        "weekly_bars_built": 38
+        "weekly_bars_built": 39
       }
     },
     {
@@ -196,14 +196,14 @@
       "Technical_Score_0_4": 0.15,
       "Technical_Verdict": "strong negative",
       "Evidence": {
-        "latest_close": 16.1756,
-        "d1_ema20": 16.300004,
-        "d1_ema50": 16.38372,
-        "w1_ema13": 16.409849,
-        "w1_ema26": 16.486596,
+        "latest_close": 16.143,
+        "d1_ema20": 16.286265,
+        "d1_ema50": 16.374808,
+        "w1_ema13": 16.373453,
+        "w1_ema26": 16.462111,
         "recent_d1_median_abs_pct_change": 0.002668,
         "daily_bars_used": 260,
-        "weekly_bars_built": 38
+        "weekly_bars_built": 39
       }
     }
   ],
