@@ -1,7 +1,7 @@
 # today_prediction_summary
 
 prediction_score_version: v5.5_prediction_quality_v2
-prediction_reference_timestamp: 2026-08-19 07:00:37
+prediction_reference_timestamp: 2026-08-19 13:32:53
 snapshot_date: 2026-08-19
 prediction_top_n: 8
 
@@ -14,19 +14,19 @@ prediction_top_n: 8
 - shadow_watchlist_rows_in_prediction_snapshot: 1
 
 ## ranking
-1. GBPCAD | side=LONG | grade10=4.21 | grade100=42.1 | band=C | entry=1.8805 | sl=1.8791 | tp1=1.8823 | tp2=1.8837
-2. EURAUD | side=LONG | grade10=4.13 | grade100=41.3 | band=C | entry=1.6393 | sl=1.638 | tp1=1.6408 | tp2=1.642
-3. CADJPY | side=LONG | grade10=3.93 | grade100=39.3 | band=D | entry=114.74 | sl=114.597 | tp1=114.915 | tp2=115.05
-4. NZDCAD | side=SHORT | grade10=3.76 | grade100=37.6 | band=D | entry=0.8154 | sl=0.8166 | tp1=0.8139 | tp2=0.8128
-5. EURCHF | side=LONG | grade10=3.66 | grade100=36.6 | band=D | entry=0.9399 | sl=0.9387 | tp1=0.9413 | tp2=0.9425
-6. AUDCHF | side=LONG | grade10=3.32 | grade100=33.2 | band=D | entry=0.5734 | sl=0.5727 | tp1=0.5743 | tp2=0.5749
-7. USDJPY | side=LONG | grade10=3.29 | grade100=32.9 | band=D | entry=159.227 | sl=159.103 | tp1=159.378 | tp2=159.495
-8. GBPJPY | side=LONG | grade10=2.3 | grade100=23.0 | band=E | entry=215.791 | sl=215.522 | tp1=216.119 | tp2=216.374
-9. AUDNZD | side=LONG | grade10=2.29 | grade100=22.9 | band=E | entry=1.2042 | sl=1.2027 | tp1=1.206 | tp2=1.2074
-10. EURJPY | side=LONG | grade10=2.1 | grade100=21.0 | band=E | entry=184.666 | sl=184.436 | tp1=184.947 | tp2=185.165
-11. EURGBP | side=LONG | grade10=1.73 | grade100=17.3 | band=E | entry=0.8556 | sl=0.8549 | tp1=0.8564 | tp2=0.857
-12. AUDUSD | side=SHORT | grade10=1.54 | grade100=15.4 | band=E | entry=0.7071 | sl=0.7076 | tp1=0.7064 | tp2=0.7059
-13. USDCHF | side=LONG | grade10=0.99 | grade100=9.9 | band=E | entry=0.8105 | sl=0.8095 | tp1=0.8117 | tp2=0.8127
-14. GBPUSD | side=SHORT | grade10=0.53 | grade100=5.3 | band=E | entry=1.3552 | sl=1.3562 | tp1=1.3539 | tp2=1.3529
-15. USDCAD | side=LONG | grade10=0.25 | grade100=2.5 | band=E | entry=1.3879 | sl=1.3868 | tp1=1.3892 | tp2=1.3902
-16. EURUSD | side=SHORT | grade10=0.0 | grade100=0.0 | band=E | entry=1.1596 | sl=1.1609 | tp1=1.158 | tp2=1.1568
+1. EURGBP | side=LONG | grade10=4.73 | grade100=47.3 | band=C | entry=0.8555 | sl=0.8548 | tp1=0.8563 | tp2=0.8569
+2. EURCHF | side=LONG | grade10=4.61 | grade100=46.1 | band=C | entry=0.9381 | sl=0.937 | tp1=0.9396 | tp2=0.9407
+3. CADJPY | side=LONG | grade10=4.01 | grade100=40.1 | band=C | entry=114.491 | sl=114.313 | tp1=114.709 | tp2=114.877
+4. GBPCAD | side=LONG | grade10=3.7 | grade100=37.0 | band=D | entry=1.8844 | sl=1.883 | tp1=1.8862 | tp2=1.8876
+5. AUDCHF | side=LONG | grade10=3.34 | grade100=33.4 | band=D | entry=0.5729 | sl=0.5721 | tp1=0.5739 | tp2=0.5747
+6. USDCHF | side=LONG | grade10=3.22 | grade100=32.2 | band=D | entry=0.8056 | sl=0.8044 | tp1=0.8071 | tp2=0.8083
+7. AUDNZD | side=LONG | grade10=2.26 | grade100=22.6 | band=E | entry=1.2032 | sl=1.2017 | tp1=1.2051 | tp2=1.2065
+8. EURJPY | side=LONG | grade10=2.16 | grade100=21.6 | band=E | entry=184.604 | sl=184.373 | tp1=184.884 | tp2=185.103
+9. GBPJPY | side=LONG | grade10=2.16 | grade100=21.6 | band=E | entry=215.787 | sl=215.518 | tp1=216.115 | tp2=216.37
+10. NZDCAD | side=SHORT | grade10=2.01 | grade100=20.1 | band=E | entry=0.8192 | sl=0.8207 | tp1=0.8174 | tp2=0.816
+11. USDJPY | side=LONG | grade10=1.45 | grade100=14.5 | band=E | entry=158.358 | sl=158.234 | tp1=158.509 | tp2=158.626
+12. EURAUD | side=LONG | grade10=1.37 | grade100=13.7 | band=E | entry=1.6362 | sl=1.6349 | tp1=1.6378 | tp2=1.639
+13. EURUSD | side=SHORT | grade10=0.34 | grade100=3.4 | band=E | entry=1.165 | sl=1.1662 | tp1=1.1634 | tp2=1.1622
+14. GBPUSD | side=SHORT | grade10=0.34 | grade100=3.4 | band=E | entry=1.3618 | sl=1.3629 | tp1=1.3606 | tp2=1.3596
+15. AUDUSD | side=SHORT | grade10=0.05 | grade100=0.5 | band=E | entry=0.7117 | sl=0.7123 | tp1=0.7111 | tp2=0.7105
+16. USDCAD | side=LONG | grade10=0.03 | grade100=0.3 | band=E | entry=1.3839 | sl=1.3828 | tp1=1.3852 | tp2=1.3862
