@@ -1,7 +1,7 @@
 # today_prediction_summary
 
 prediction_score_version: v5.5_prediction_quality_v2
-prediction_reference_timestamp: 2026-08-22 06:56:50
+prediction_reference_timestamp: 2026-08-22 13:16:37
 snapshot_date: 2026-08-22
 prediction_top_n: 8
 
@@ -14,19 +14,19 @@ prediction_top_n: 8
 - shadow_watchlist_rows_in_prediction_snapshot: 0
 
 ## ranking
-1. EURAUD | side=SHORT | grade10=4.34 | grade100=43.4 | band=C | entry=1.6286 | sl=1.6302 | tp1=1.6267 | tp2=1.6253
-2. AUDNZD | side=LONG | grade10=4.12 | grade100=41.2 | band=C | entry=1.1992 | sl=1.1982 | tp1=1.2003 | tp2=1.2012
-3. USDCHF | side=LONG | grade10=4.03 | grade100=40.3 | band=C | entry=0.801 | sl=0.8004 | tp1=0.8018 | tp2=0.8024
-4. EURUSD | side=SHORT | grade10=3.76 | grade100=37.6 | band=D | entry=1.1677 | sl=1.1694 | tp1=1.1656 | tp2=1.164
-5. USDCAD | side=SHORT | grade10=3.71 | grade100=37.1 | band=D | entry=1.3768 | sl=1.3785 | tp1=1.3747 | tp2=1.3731
-6. GBPUSD | side=LONG | grade10=3.52 | grade100=35.2 | band=D | entry=1.3645 | sl=1.3628 | tp1=1.3666 | tp2=1.3682
-7. GBPCAD | side=SHORT | grade10=3.43 | grade100=34.3 | band=D | entry=1.8785 | sl=1.8809 | tp1=1.8757 | tp2=1.8735
-8. AUDCHF | side=LONG | grade10=3.4 | grade100=34.0 | band=D | entry=0.5743 | sl=0.5737 | tp1=0.575 | tp2=0.5756
-9. EURCHF | side=LONG | grade10=3.27 | grade100=32.7 | band=D | entry=0.9353 | sl=0.9346 | tp1=0.9362 | tp2=0.9369
-10. CADJPY | side=LONG | grade10=2.8 | grade100=28.0 | band=D | entry=115.482 | sl=115.338 | tp1=115.658 | tp2=115.794
-11. EURGBP | side=SHORT | grade10=2.55 | grade100=25.5 | band=D | entry=0.8558 | sl=0.8565 | tp1=0.855 | tp2=0.8543
-12. EURJPY | side=LONG | grade10=2.39 | grade100=23.9 | band=E | entry=185.632 | sl=185.33 | tp1=185.998 | tp2=186.284
-13. AUDUSD | side=LONG | grade10=2.33 | grade100=23.3 | band=E | entry=0.717 | sl=0.7153 | tp1=0.719 | tp2=0.7207
-14. GBPJPY | side=LONG | grade10=2.07 | grade100=20.7 | band=E | entry=216.934 | sl=216.663 | tp1=217.264 | tp2=217.52
-15. NZDCAD | side=LONG | grade10=1.44 | grade100=14.4 | band=E | entry=0.8231 | sl=0.8205 | tp1=0.8263 | tp2=0.8288
-16. USDJPY | side=SHORT | grade10=0.25 | grade100=2.5 | band=E | entry=158.997 | sl=159.121 | tp1=158.846 | tp2=158.728
+1. EURAUD | side=SHORT | grade10=4.82 | grade100=48.2 | band=C | entry=1.629 | sl=1.6305 | tp1=1.6271 | tp2=1.6257
+2. AUDNZD | side=LONG | grade10=4.44 | grade100=44.4 | band=C | entry=1.1992 | sl=1.1982 | tp1=1.2003 | tp2=1.2012
+3. NZDCAD | side=LONG | grade10=4.38 | grade100=43.8 | band=C | entry=0.8232 | sl=0.8206 | tp1=0.8264 | tp2=0.8289
+4. AUDCHF | side=LONG | grade10=4.37 | grade100=43.7 | band=C | entry=0.5744 | sl=0.5738 | tp1=0.5751 | tp2=0.5757
+5. USDCHF | side=LONG | grade10=4.36 | grade100=43.6 | band=C | entry=0.801 | sl=0.8004 | tp1=0.8018 | tp2=0.8024
+6. EURCHF | side=LONG | grade10=3.66 | grade100=36.6 | band=D | entry=0.9356 | sl=0.9348 | tp1=0.9365 | tp2=0.9373
+7. USDCAD | side=SHORT | grade10=3.52 | grade100=35.2 | band=D | entry=1.3769 | sl=1.3786 | tp1=1.3748 | tp2=1.3732
+8. GBPCAD | side=SHORT | grade10=3.09 | grade100=30.9 | band=D | entry=1.8786 | sl=1.881 | tp1=1.8758 | tp2=1.8735
+9. EURGBP | side=SHORT | grade10=2.7 | grade100=27.0 | band=D | entry=0.8561 | sl=0.8568 | tp1=0.8552 | tp2=0.8545
+10. CADJPY | side=LONG | grade10=2.64 | grade100=26.4 | band=D | entry=115.468 | sl=115.324 | tp1=115.643 | tp2=115.78
+11. AUDUSD | side=LONG | grade10=2.6 | grade100=26.0 | band=D | entry=0.717 | sl=0.7153 | tp1=0.7191 | tp2=0.7207
+12. GBPUSD | side=LONG | grade10=2.52 | grade100=25.2 | band=D | entry=1.3644 | sl=1.3627 | tp1=1.3664 | tp2=1.368
+13. EURJPY | side=LONG | grade10=2.35 | grade100=23.5 | band=E | entry=185.677 | sl=185.299 | tp1=186.136 | tp2=186.492
+14. GBPJPY | side=LONG | grade10=1.88 | grade100=18.8 | band=E | entry=216.908 | sl=216.637 | tp1=217.238 | tp2=217.494
+15. EURUSD | side=SHORT | grade10=1.33 | grade100=13.3 | band=E | entry=1.168 | sl=1.1703 | tp1=1.1652 | tp2=1.163
+16. USDJPY | side=SHORT | grade10=0.39 | grade100=3.9 | band=E | entry=158.993 | sl=159.118 | tp1=158.842 | tp2=158.725
