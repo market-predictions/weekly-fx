@@ -1,8 +1,8 @@
 # today_prediction_summary
 
 prediction_score_version: v5.5_prediction_quality_v2
-prediction_reference_timestamp: 2026-08-30 17:02:08
-snapshot_date: 2026-08-30
+prediction_reference_timestamp: 2026-08-31 13:24:46
+snapshot_date: 2026-08-31
 prediction_top_n: 8
 
 ## integrity
@@ -14,19 +14,19 @@ prediction_top_n: 8
 - shadow_watchlist_rows_in_prediction_snapshot: 0
 
 ## ranking
-1. USDJPY | side=LONG | grade10=4.47 | grade100=44.7 | band=C | entry=160.096 | sl=159.972 | tp1=160.246 | tp2=160.364
-2. AUDUSD | side=LONG | grade10=4.43 | grade100=44.3 | band=C | entry=0.7161 | sl=0.7152 | tp1=0.7172 | tp2=0.7181
-3. AUDNZD | side=LONG | grade10=4.23 | grade100=42.3 | band=C | entry=1.211 | sl=1.2101 | tp1=1.2122 | tp2=1.2131
-4. EURCHF | side=SHORT | grade10=4.13 | grade100=41.3 | band=C | entry=0.9328 | sl=0.9337 | tp1=0.9318 | tp2=0.9309
-5. EURGBP | side=LONG | grade10=3.99 | grade100=39.9 | band=D | entry=0.8518 | sl=0.8511 | tp1=0.8527 | tp2=0.8534
-6. EURJPY | side=LONG | grade10=3.88 | grade100=38.8 | band=D | entry=184.687 | sl=184.297 | tp1=185.16 | tp2=185.527
-7. EURAUD | side=SHORT | grade10=3.49 | grade100=34.9 | band=D | entry=1.611 | sl=1.6151 | tp1=1.606 | tp2=1.6021
-8. GBPUSD | side=SHORT | grade10=3.46 | grade100=34.6 | band=D | entry=1.3544 | sl=1.3554 | tp1=1.3531 | tp2=1.3521
-9. NZDCAD | side=LONG | grade10=3.13 | grade100=31.3 | band=D | entry=0.8218 | sl=0.8208 | tp1=0.8231 | tp2=0.824
-10. USDCHF | side=SHORT | grade10=2.58 | grade100=25.8 | band=D | entry=0.8086 | sl=0.8092 | tp1=0.8078 | tp2=0.8072
-11. EURUSD | side=SHORT | grade10=1.79 | grade100=17.9 | band=E | entry=1.1537 | sl=1.1547 | tp1=1.1526 | tp2=1.1517
-12. USDCAD | side=LONG | grade10=1.22 | grade100=12.2 | band=E | entry=1.3898 | sl=1.3887 | tp1=1.3911 | tp2=1.3921
-13. AUDCHF | side=LONG | grade10=1.13 | grade100=11.3 | band=E | entry=0.579 | sl=0.5783 | tp1=0.5799 | tp2=0.5806
-14. GBPJPY | side=SHORT | grade10=0.97 | grade100=9.7 | band=E | entry=216.83 | sl=216.999 | tp1=216.624 | tp2=216.464
-15. CADJPY | side=SHORT | grade10=0.2 | grade100=2.0 | band=E | entry=115.204 | sl=115.348 | tp1=115.029 | tp2=114.892
-16. GBPCAD | side=SHORT | grade10=0.1 | grade100=1.0 | band=E | entry=1.8823 | sl=1.8838 | tp1=1.8805 | tp2=1.8791
+1. GBPJPY | side=SHORT | grade10=4.92 | grade100=49.2 | band=C | entry=216.478 | sl=216.647 | tp1=216.272 | tp2=216.112
+2. CADJPY | side=SHORT | grade10=3.82 | grade100=38.2 | band=D | entry=115.159 | sl=115.303 | tp1=114.984 | tp2=114.848
+3. AUDCHF | side=LONG | grade10=3.77 | grade100=37.7 | band=D | entry=0.5787 | sl=0.578 | tp1=0.5796 | tp2=0.5803
+4. GBPUSD | side=SHORT | grade10=3.73 | grade100=37.3 | band=D | entry=1.3543 | sl=1.3554 | tp1=1.353 | tp2=1.352
+5. USDJPY | side=LONG | grade10=3.57 | grade100=35.7 | band=D | entry=159.848 | sl=159.648 | tp1=160.091 | tp2=160.279
+6. EURCHF | side=LONG | grade10=3.46 | grade100=34.6 | band=D | entry=0.9373 | sl=0.9344 | tp1=0.9409 | tp2=0.9437
+7. USDCHF | side=LONG | grade10=3.36 | grade100=33.6 | band=D | entry=0.8084 | sl=0.8078 | tp1=0.8091 | tp2=0.8097
+8. USDCAD | side=LONG | grade10=3.2 | grade100=32.0 | band=D | entry=1.3883 | sl=1.3862 | tp1=1.3908 | tp2=1.3927
+9. EURAUD | side=LONG | grade10=3.06 | grade100=30.6 | band=D | entry=1.6194 | sl=1.6175 | tp1=1.6216 | tp2=1.6234
+10. GBPCAD | side=LONG | grade10=2.45 | grade100=24.5 | band=E | entry=1.88 | sl=1.8776 | tp1=1.8828 | tp2=1.8851
+11. EURUSD | side=SHORT | grade10=1.54 | grade100=15.4 | band=E | entry=1.1599 | sl=1.1622 | tp1=1.1571 | tp2=1.1549
+12. AUDUSD | side=SHORT | grade10=1.53 | grade100=15.3 | band=E | entry=0.7161 | sl=0.7167 | tp1=0.7155 | tp2=0.7149
+13. EURGBP | side=LONG | grade10=1.03 | grade100=10.3 | band=E | entry=0.8563 | sl=0.8543 | tp1=0.8588 | tp2=0.8607
+14. EURJPY | side=SHORT | grade10=0.68 | grade100=6.8 | band=E | entry=185.386 | sl=185.554 | tp1=185.181 | tp2=185.022
+15. AUDNZD | side=SHORT | grade10=0.22 | grade100=2.2 | band=E | entry=1.2106 | sl=1.2115 | tp1=1.2094 | tp2=1.2085
+16. NZDCAD | side=LONG | grade10=0.0 | grade100=0.0 | band=E | entry=0.8212 | sl=0.8202 | tp1=0.8225 | tp2=0.8235
