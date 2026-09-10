@@ -1,7 +1,7 @@
 # today_prediction_summary
 
 prediction_score_version: v5.5_prediction_quality_v2
-prediction_reference_timestamp: 2026-09-10 11:07:27
+prediction_reference_timestamp: 2026-09-10 16:43:51
 snapshot_date: 2026-09-10
 prediction_top_n: 8
 
@@ -14,19 +14,19 @@ prediction_top_n: 8
 - shadow_watchlist_rows_in_prediction_snapshot: 0
 
 ## ranking
-1. EURGBP | side=LONG | grade10=4.52 | grade100=45.2 | band=C | entry=0.8589 | sl=0.8578 | tp1=0.8602 | tp2=0.8612
-2. USDCHF | side=LONG | grade10=4.43 | grade100=44.3 | band=C | entry=0.8111 | sl=0.8105 | tp1=0.8119 | tp2=0.8125
-3. AUDCHF | side=LONG | grade10=4.0 | grade100=40.0 | band=C | entry=0.5838 | sl=0.583 | tp1=0.5848 | tp2=0.5856
-4. AUDUSD | side=LONG | grade10=3.98 | grade100=39.8 | band=D | entry=0.7199 | sl=0.719 | tp1=0.721 | tp2=0.7219
-5. EURUSD | side=LONG | grade10=3.97 | grade100=39.7 | band=D | entry=1.1627 | sl=1.1613 | tp1=1.1645 | tp2=1.1659
-6. EURJPY | side=SHORT | grade10=3.76 | grade100=37.6 | band=D | entry=179.145 | sl=179.288 | tp1=178.971 | tp2=178.836
-7. CADJPY | side=SHORT | grade10=3.76 | grade100=37.6 | band=D | entry=111.527 | sl=111.616 | tp1=111.419 | tp2=111.334
-8. NZDCAD | side=SHORT | grade10=3.71 | grade100=37.1 | band=D | entry=0.8061 | sl=0.8073 | tp1=0.8048 | tp2=0.8037
-9. GBPJPY | side=SHORT | grade10=3.53 | grade100=35.3 | band=D | entry=208.585 | sl=208.884 | tp1=208.222 | tp2=207.94
-10. USDJPY | side=SHORT | grade10=3.09 | grade100=30.9 | band=D | entry=154.108 | sl=154.232 | tp1=153.958 | tp2=153.841
-11. EURCHF | side=LONG | grade10=3.05 | grade100=30.5 | band=D | entry=0.9431 | sl=0.9424 | tp1=0.944 | tp2=0.9447
-12. AUDNZD | side=LONG | grade10=2.47 | grade100=24.7 | band=E | entry=1.2338 | sl=1.232 | tp1=1.2359 | tp2=1.2376
-13. GBPUSD | side=LONG | grade10=1.53 | grade100=15.3 | band=E | entry=1.3539 | sl=1.3528 | tp1=1.3552 | tp2=1.3562
-14. USDCAD | side=LONG | grade10=1.45 | grade100=14.5 | band=E | entry=1.3817 | sl=1.3806 | tp1=1.383 | tp2=1.384
-15. EURAUD | side=LONG | grade10=1.45 | grade100=14.5 | band=E | entry=1.6154 | sl=1.6141 | tp1=1.6169 | tp2=1.6181
-16. GBPCAD | side=LONG | grade10=1.29 | grade100=12.9 | band=E | entry=1.8704 | sl=1.869 | tp1=1.8722 | tp2=1.8736
+1. USDCHF | side=LONG | grade10=5.22 | grade100=52.2 | band=C | entry=0.8121 | sl=0.8115 | tp1=0.8129 | tp2=0.8135
+2. EURGBP | side=LONG | grade10=4.64 | grade100=46.4 | band=C | entry=0.8592 | sl=0.8581 | tp1=0.8605 | tp2=0.8615
+3. EURAUD | side=LONG | grade10=3.93 | grade100=39.3 | band=D | entry=1.6216 | sl=1.6204 | tp1=1.6232 | tp2=1.6244
+4. EURUSD | side=LONG | grade10=3.88 | grade100=38.8 | band=D | entry=1.1623 | sl=1.1608 | tp1=1.164 | tp2=1.1654
+5. GBPJPY | side=SHORT | grade10=3.71 | grade100=37.1 | band=D | entry=208.78 | sl=209.209 | tp1=208.259 | tp2=207.854
+6. USDJPY | side=SHORT | grade10=3.27 | grade100=32.7 | band=D | entry=154.327 | sl=154.481 | tp1=154.14 | tp2=153.995
+7. CADJPY | side=SHORT | grade10=3.27 | grade100=32.7 | band=D | entry=111.774 | sl=111.88 | tp1=111.645 | tp2=111.545
+8. EURCHF | side=LONG | grade10=3.26 | grade100=32.6 | band=D | entry=0.9439 | sl=0.9431 | tp1=0.9447 | tp2=0.9454
+9. EURJPY | side=SHORT | grade10=3.25 | grade100=32.5 | band=D | entry=179.391 | sl=179.541 | tp1=179.208 | tp2=179.066
+10. AUDNZD | side=LONG | grade10=2.64 | grade100=26.4 | band=D | entry=1.2346 | sl=1.233 | tp1=1.2366 | tp2=1.2382
+11. AUDCHF | side=LONG | grade10=2.3 | grade100=23.0 | band=E | entry=0.582 | sl=0.5811 | tp1=0.5832 | tp2=0.584
+12. NZDCAD | side=SHORT | grade10=1.92 | grade100=19.2 | band=E | entry=0.8018 | sl=0.8033 | tp1=0.7999 | tp2=0.7985
+13. USDCAD | side=LONG | grade10=1.65 | grade100=16.5 | band=E | entry=1.3811 | sl=1.38 | tp1=1.3824 | tp2=1.3834
+14. GBPUSD | side=LONG | grade10=1.54 | grade100=15.4 | band=E | entry=1.3525 | sl=1.3515 | tp1=1.3538 | tp2=1.3548
+15. AUDUSD | side=LONG | grade10=0.64 | grade100=6.4 | band=E | entry=0.7164 | sl=0.7152 | tp1=0.7179 | tp2=0.7191
+16. GBPCAD | side=LONG | grade10=0.0 | grade100=0.0 | band=E | entry=1.8679 | sl=1.8664 | tp1=1.8696 | tp2=1.871
