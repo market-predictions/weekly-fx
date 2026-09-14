@@ -1,7 +1,7 @@
 # today_prediction_summary
 
 prediction_score_version: v5.5_prediction_quality_v2
-prediction_reference_timestamp: 2026-09-14 12:31:20
+prediction_reference_timestamp: 2026-09-14 18:15:50
 snapshot_date: 2026-09-14
 prediction_top_n: 8
 
@@ -14,19 +14,19 @@ prediction_top_n: 8
 - shadow_watchlist_rows_in_prediction_snapshot: 0
 
 ## ranking
-1. EURAUD | side=LONG | grade10=4.35 | grade100=43.5 | band=C | entry=1.6193 | sl=1.618 | tp1=1.6208 | tp2=1.622
-2. GBPCAD | side=SHORT | grade10=4.34 | grade100=43.4 | band=C | entry=1.8754 | sl=1.8768 | tp1=1.8736 | tp2=1.8722
-3. USDCHF | side=LONG | grade10=4.26 | grade100=42.6 | band=C | entry=0.8173 | sl=0.8167 | tp1=0.8181 | tp2=0.8187
-4. USDJPY | side=LONG | grade10=4.21 | grade100=42.1 | band=C | entry=154.603 | sl=154.431 | tp1=154.812 | tp2=154.975
-5. GBPUSD | side=SHORT | grade10=4.21 | grade100=42.1 | band=C | entry=1.3489 | sl=1.3499 | tp1=1.3476 | tp2=1.3466
-6. EURCHF | side=SHORT | grade10=4.18 | grade100=41.8 | band=C | entry=0.9436 | sl=0.9443 | tp1=0.9427 | tp2=0.942
-7. AUDUSD | side=SHORT | grade10=4.12 | grade100=41.2 | band=C | entry=0.7127 | sl=0.7136 | tp1=0.7115 | tp2=0.7106
-8. USDCAD | side=LONG | grade10=2.71 | grade100=27.1 | band=D | entry=1.3904 | sl=1.3893 | tp1=1.3917 | tp2=1.3928
-9. CADJPY | side=LONG | grade10=1.55 | grade100=15.5 | band=E | entry=111.234 | sl=111.129 | tp1=111.362 | tp2=111.461
-10. EURJPY | side=LONG | grade10=1.49 | grade100=14.9 | band=E | entry=178.481 | sl=178.295 | tp1=178.707 | tp2=178.883
-11. AUDCHF | side=LONG | grade10=1.22 | grade100=12.2 | band=E | entry=0.5826 | sl=0.5816 | tp1=0.5839 | tp2=0.5848
-12. AUDNZD | side=SHORT | grade10=0.87 | grade100=8.7 | band=E | entry=1.2355 | sl=1.2378 | tp1=1.2326 | tp2=1.2304
-13. GBPJPY | side=SHORT | grade10=0.68 | grade100=6.8 | band=E | entry=208.597 | sl=208.998 | tp1=208.109 | tp2=207.73
-14. EURUSD | side=LONG | grade10=0.33 | grade100=3.3 | band=E | entry=1.1543 | sl=1.1529 | tp1=1.1561 | tp2=1.1574
-15. NZDCAD | side=LONG | grade10=0.0 | grade100=0.0 | band=E | entry=0.8019 | sl=0.8012 | tp1=0.8028 | tp2=0.8036
-16. EURGBP | side=LONG | grade10=0.0 | grade100=0.0 | band=E | entry=0.8557 | sl=0.8546 | tp1=0.857 | tp2=0.858
+1. USDCAD | side=LONG | grade10=4.22 | grade100=42.2 | band=C | entry=1.3901 | sl=1.389 | tp1=1.3914 | tp2=1.3924
+2. EURAUD | side=LONG | grade10=4.08 | grade100=40.8 | band=C | entry=1.6176 | sl=1.6163 | tp1=1.6191 | tp2=1.6203
+3. EURCHF | side=SHORT | grade10=4.01 | grade100=40.1 | band=C | entry=0.9436 | sl=0.9444 | tp1=0.9427 | tp2=0.942
+4. CADJPY | side=LONG | grade10=3.98 | grade100=39.8 | band=D | entry=111.063 | sl=110.958 | tp1=111.191 | tp2=111.29
+5. USDCHF | side=LONG | grade10=3.18 | grade100=31.8 | band=D | entry=0.8164 | sl=0.8157 | tp1=0.8173 | tp2=0.8179
+6. EURUSD | side=LONG | grade10=2.85 | grade100=28.5 | band=D | entry=1.1556 | sl=1.1547 | tp1=1.1567 | tp2=1.1575
+7. AUDUSD | side=SHORT | grade10=2.02 | grade100=20.2 | band=E | entry=0.7144 | sl=0.7153 | tp1=0.7132 | tp2=0.7123
+8. GBPJPY | side=SHORT | grade10=1.96 | grade100=19.6 | band=E | entry=208.591 | sl=208.993 | tp1=208.104 | tp2=207.724
+9. USDJPY | side=LONG | grade10=1.76 | grade100=17.6 | band=E | entry=154.383 | sl=154.107 | tp1=154.718 | tp2=154.978
+10. EURJPY | side=LONG | grade10=1.6 | grade100=16.0 | band=E | entry=178.409 | sl=178.223 | tp1=178.634 | tp2=178.81
+11. GBPUSD | side=SHORT | grade10=1.54 | grade100=15.4 | band=E | entry=1.3509 | sl=1.3519 | tp1=1.3496 | tp2=1.3486
+12. AUDCHF | side=LONG | grade10=0.88 | grade100=8.8 | band=E | entry=0.5832 | sl=0.5822 | tp1=0.5845 | tp2=0.5855
+13. GBPCAD | side=SHORT | grade10=0.37 | grade100=3.7 | band=E | entry=1.878 | sl=1.8794 | tp1=1.8762 | tp2=1.8748
+14. AUDNZD | side=SHORT | grade10=0.31 | grade100=3.1 | band=E | entry=1.2351 | sl=1.2375 | tp1=1.2323 | tp2=1.23
+15. EURGBP | side=LONG | grade10=0.0 | grade100=0.0 | band=E | entry=0.8554 | sl=0.8544 | tp1=0.8567 | tp2=0.8577
+16. NZDCAD | side=LONG | grade10=0.0 | grade100=0.0 | band=E | entry=0.804 | sl=0.8033 | tp1=0.8049 | tp2=0.8056
