@@ -2,8 +2,8 @@
   "snapshot_meta": {
     "prediction_enabled": true,
     "prediction_score_version": "v5.5_prediction_quality_v2",
-    "prediction_reference_timestamp": "2026-10-02 18:04:49",
-    "snapshot_date": "2026-10-02",
+    "prediction_reference_timestamp": "2026-10-03 16:43:28",
+    "snapshot_date": "2026-10-03",
     "prediction_input_fields": [
       "Instrument",
       "Preferred_Side",
@@ -126,7 +126,7 @@
     },
     {
       "Metric": "shadow_watchlist_rows_in_prediction_snapshot",
-      "Value": 0
+      "Value": 1
     }
   ]
 }
