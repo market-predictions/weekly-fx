@@ -1,7 +1,7 @@
 # today_prediction_summary
 
 prediction_score_version: v5.5_prediction_quality_v2
-prediction_reference_timestamp: 2026-10-18 10:51:44
+prediction_reference_timestamp: 2026-10-18 16:11:17
 snapshot_date: 2026-10-18
 prediction_top_n: 8
 
@@ -14,19 +14,19 @@ prediction_top_n: 8
 - shadow_watchlist_rows_in_prediction_snapshot: 0
 
 ## ranking
-1. GBPUSD | side=LONG | grade10=4.05 | grade100=40.5 | band=C | entry=1.3328 | sl=1.3318 | tp1=1.3341 | tp2=1.3351
-2. CADJPY | side=LONG | grade10=3.67 | grade100=36.7 | band=D | entry=111.651 | sl=111.564 | tp1=111.756 | tp2=111.838
-3. EURAUD | side=SHORT | grade10=3.63 | grade100=36.3 | band=D | entry=1.6178 | sl=1.619 | tp1=1.6162 | tp2=1.615
-4. AUDNZD | side=LONG | grade10=3.6 | grade100=36.0 | band=D | entry=1.2291 | sl=1.2276 | tp1=1.231 | tp2=1.2325
-5. GBPCAD | side=LONG | grade10=3.36 | grade100=33.6 | band=D | entry=1.8856 | sl=1.8842 | tp1=1.8874 | tp2=1.8888
-6. AUDUSD | side=LONG | grade10=3.21 | grade100=32.1 | band=D | entry=0.6947 | sl=0.693 | tp1=0.6968 | tp2=0.6984
-7. USDJPY | side=LONG | grade10=3.03 | grade100=30.3 | band=D | entry=157.963 | sl=157.766 | tp1=158.203 | tp2=158.39
-8. USDCAD | side=LONG | grade10=2.64 | grade100=26.4 | band=D | entry=1.4147 | sl=1.4136 | tp1=1.4161 | tp2=1.4171
-9. EURUSD | side=LONG | grade10=2.43 | grade100=24.3 | band=E | entry=1.1238 | sl=1.1229 | tp1=1.1248 | tp2=1.1257
-10. EURGBP | side=SHORT | grade10=2.23 | grade100=22.3 | band=E | entry=0.8432 | sl=0.8442 | tp1=0.8419 | tp2=0.8409
-11. AUDCHF | side=LONG | grade10=1.57 | grade100=15.8 | band=E | entry=0.5727 | sl=0.572 | tp1=0.5735 | tp2=0.5742
-12. EURJPY | side=LONG | grade10=1.37 | grade100=13.7 | band=E | entry=177.52 | sl=177.382 | tp1=177.688 | tp2=177.819
-13. USDCHF | side=LONG | grade10=1.13 | grade100=11.3 | band=E | entry=0.8244 | sl=0.8237 | tp1=0.8252 | tp2=0.8258
-14. NZDCAD | side=LONG | grade10=1.1 | grade100=11.0 | band=E | entry=0.7995 | sl=0.7989 | tp1=0.8003 | tp2=0.8009
-15. GBPJPY | side=LONG | grade10=1.07 | grade100=10.7 | band=E | entry=210.541 | sl=210.378 | tp1=210.74 | tp2=210.894
-16. EURCHF | side=LONG | grade10=0.0 | grade100=0.0 | band=E | entry=0.9264 | sl=0.9253 | tp1=0.9278 | tp2=0.9289
+1. EURJPY | side=LONG | grade10=4.58 | grade100=45.8 | band=C | entry=177.579 | sl=177.441 | tp1=177.747 | tp2=177.878
+2. USDJPY | side=LONG | grade10=3.86 | grade100=38.6 | band=D | entry=158.041 | sl=157.844 | tp1=158.281 | tp2=158.468
+3. GBPJPY | side=LONG | grade10=3.44 | grade100=34.4 | band=D | entry=210.625 | sl=210.461 | tp1=210.823 | tp2=210.978
+4. USDCHF | side=LONG | grade10=3.34 | grade100=33.4 | band=D | entry=0.8249 | sl=0.8243 | tp1=0.8257 | tp2=0.8263
+5. USDCAD | side=LONG | grade10=3.19 | grade100=31.9 | band=D | entry=1.4142 | sl=1.4131 | tp1=1.4155 | tp2=1.4166
+6. CADJPY | side=LONG | grade10=2.68 | grade100=26.8 | band=D | entry=111.748 | sl=111.661 | tp1=111.853 | tp2=111.935
+7. AUDCHF | side=LONG | grade10=2.41 | grade100=24.1 | band=E | entry=0.5731 | sl=0.5724 | tp1=0.5739 | tp2=0.5745
+8. EURGBP | side=SHORT | grade10=1.97 | grade100=19.7 | band=E | entry=0.8432 | sl=0.8442 | tp1=0.8419 | tp2=0.8409
+9. EURAUD | side=SHORT | grade10=1.88 | grade100=18.8 | band=E | entry=1.6178 | sl=1.619 | tp1=1.6162 | tp2=1.6151
+10. GBPCAD | side=LONG | grade10=1.85 | grade100=18.5 | band=E | entry=1.8848 | sl=1.8834 | tp1=1.8866 | tp2=1.888
+11. EURUSD | side=LONG | grade10=1.53 | grade100=15.3 | band=E | entry=1.1237 | sl=1.1228 | tp1=1.1248 | tp2=1.1256
+12. GBPUSD | side=LONG | grade10=1.41 | grade100=14.1 | band=E | entry=1.3328 | sl=1.3318 | tp1=1.3341 | tp2=1.335
+13. AUDNZD | side=LONG | grade10=1.4 | grade100=14.0 | band=E | entry=1.2291 | sl=1.2275 | tp1=1.2309 | tp2=1.2324
+14. AUDUSD | side=LONG | grade10=1.37 | grade100=13.7 | band=E | entry=0.6947 | sl=0.6929 | tp1=0.6967 | tp2=0.6984
+15. EURCHF | side=LONG | grade10=0.83 | grade100=8.3 | band=E | entry=0.927 | sl=0.9258 | tp1=0.9284 | tp2=0.9295
+16. NZDCAD | side=LONG | grade10=0.0 | grade100=0.0 | band=E | entry=0.7992 | sl=0.7986 | tp1=0.8 | tp2=0.8006
