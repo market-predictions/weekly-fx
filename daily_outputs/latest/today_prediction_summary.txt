@@ -1,8 +1,8 @@
 # today_prediction_summary
 
 prediction_score_version: v5.5_prediction_quality_v2
-prediction_reference_timestamp: 2026-10-18 16:11:17
-snapshot_date: 2026-10-18
+prediction_reference_timestamp: 2026-10-19 12:52:18
+snapshot_date: 2026-10-19
 prediction_top_n: 8
 
 ## integrity
@@ -14,19 +14,19 @@ prediction_top_n: 8
 - shadow_watchlist_rows_in_prediction_snapshot: 0
 
 ## ranking
-1. EURJPY | side=LONG | grade10=4.58 | grade100=45.8 | band=C | entry=177.579 | sl=177.441 | tp1=177.747 | tp2=177.878
-2. USDJPY | side=LONG | grade10=3.86 | grade100=38.6 | band=D | entry=158.041 | sl=157.844 | tp1=158.281 | tp2=158.468
-3. GBPJPY | side=LONG | grade10=3.44 | grade100=34.4 | band=D | entry=210.625 | sl=210.461 | tp1=210.823 | tp2=210.978
-4. USDCHF | side=LONG | grade10=3.34 | grade100=33.4 | band=D | entry=0.8249 | sl=0.8243 | tp1=0.8257 | tp2=0.8263
-5. USDCAD | side=LONG | grade10=3.19 | grade100=31.9 | band=D | entry=1.4142 | sl=1.4131 | tp1=1.4155 | tp2=1.4166
-6. CADJPY | side=LONG | grade10=2.68 | grade100=26.8 | band=D | entry=111.748 | sl=111.661 | tp1=111.853 | tp2=111.935
-7. AUDCHF | side=LONG | grade10=2.41 | grade100=24.1 | band=E | entry=0.5731 | sl=0.5724 | tp1=0.5739 | tp2=0.5745
-8. EURGBP | side=SHORT | grade10=1.97 | grade100=19.7 | band=E | entry=0.8432 | sl=0.8442 | tp1=0.8419 | tp2=0.8409
-9. EURAUD | side=SHORT | grade10=1.88 | grade100=18.8 | band=E | entry=1.6178 | sl=1.619 | tp1=1.6162 | tp2=1.6151
-10. GBPCAD | side=LONG | grade10=1.85 | grade100=18.5 | band=E | entry=1.8848 | sl=1.8834 | tp1=1.8866 | tp2=1.888
-11. EURUSD | side=LONG | grade10=1.53 | grade100=15.3 | band=E | entry=1.1237 | sl=1.1228 | tp1=1.1248 | tp2=1.1256
-12. GBPUSD | side=LONG | grade10=1.41 | grade100=14.1 | band=E | entry=1.3328 | sl=1.3318 | tp1=1.3341 | tp2=1.335
-13. AUDNZD | side=LONG | grade10=1.4 | grade100=14.0 | band=E | entry=1.2291 | sl=1.2275 | tp1=1.2309 | tp2=1.2324
-14. AUDUSD | side=LONG | grade10=1.37 | grade100=13.7 | band=E | entry=0.6947 | sl=0.6929 | tp1=0.6967 | tp2=0.6984
-15. EURCHF | side=LONG | grade10=0.83 | grade100=8.3 | band=E | entry=0.927 | sl=0.9258 | tp1=0.9284 | tp2=0.9295
-16. NZDCAD | side=LONG | grade10=0.0 | grade100=0.0 | band=E | entry=0.7992 | sl=0.7986 | tp1=0.8 | tp2=0.8006
+1. GBPCAD | side=SHORT | grade10=4.2 | grade100=42.0 | band=C | entry=1.8776 | sl=1.8791 | tp1=1.8758 | tp2=1.8744
+2. EURJPY | side=SHORT | grade10=4.06 | grade100=40.6 | band=C | entry=177.675 | sl=177.814 | tp1=177.507 | tp2=177.375
+3. EURGBP | side=SHORT | grade10=3.92 | grade100=39.2 | band=D | entry=0.8422 | sl=0.8429 | tp1=0.8414 | tp2=0.8408
+4. AUDUSD | side=LONG | grade10=3.11 | grade100=31.1 | band=D | entry=0.6981 | sl=0.6964 | tp1=0.7002 | tp2=0.7018
+5. USDCAD | side=SHORT | grade10=2.71 | grade100=27.1 | band=D | entry=1.4099 | sl=1.411 | tp1=1.4085 | tp2=1.4075
+6. CADJPY | side=LONG | grade10=2.63 | grade100=26.3 | band=D | entry=112.393 | sl=112.307 | tp1=112.499 | tp2=112.581
+7. EURCHF | side=SHORT | grade10=2.31 | grade100=23.1 | band=E | entry=0.9264 | sl=0.9273 | tp1=0.9252 | tp2=0.9243
+8. EURUSD | side=SHORT | grade10=2.22 | grade100=22.2 | band=E | entry=1.1216 | sl=1.1224 | tp1=1.1205 | tp2=1.1197
+9. USDJPY | side=LONG | grade10=1.78 | grade100=17.8 | band=E | entry=158.376 | sl=158.253 | tp1=158.526 | tp2=158.643
+10. EURAUD | side=SHORT | grade10=1.53 | grade100=15.3 | band=E | entry=1.6074 | sl=1.6089 | tp1=1.6055 | tp2=1.604
+11. AUDNZD | side=LONG | grade10=1.22 | grade100=12.2 | band=E | entry=1.2316 | sl=1.228 | tp1=1.2359 | tp2=1.2392
+12. AUDCHF | side=LONG | grade10=0.91 | grade100=9.1 | band=E | entry=0.5763 | sl=0.5758 | tp1=0.5769 | tp2=0.5773
+13. GBPUSD | side=SHORT | grade10=0.56 | grade100=5.6 | band=E | entry=1.332 | sl=1.333 | tp1=1.3307 | tp2=1.3297
+14. USDCHF | side=LONG | grade10=0.48 | grade100=4.8 | band=E | entry=0.8257 | sl=0.825 | tp1=0.8265 | tp2=0.8271
+15. NZDCAD | side=LONG | grade10=0.47 | grade100=4.7 | band=E | entry=0.7989 | sl=0.7983 | tp1=0.7997 | tp2=0.8003
+16. GBPJPY | side=SHORT | grade10=0.0 | grade100=0.0 | band=E | entry=210.999 | sl=211.163 | tp1=210.799 | tp2=210.644
