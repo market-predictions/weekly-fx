@@ -1,7 +1,7 @@
 # today_prediction_summary
 
 prediction_score_version: v5.5_prediction_quality_v2
-prediction_reference_timestamp: 2026-11-11 14:02:25
+prediction_reference_timestamp: 2026-11-11 19:55:05
 snapshot_date: 2026-11-11
 prediction_top_n: 8
 
@@ -14,19 +14,19 @@ prediction_top_n: 8
 - shadow_watchlist_rows_in_prediction_snapshot: 0
 
 ## ranking
-1. EURUSD | side=SHORT | grade10=4.02 | grade100=40.2 | band=C | entry=1.1108 | sl=1.1119 | tp1=1.1095 | tp2=1.1085
-2. EURCHF | side=LONG | grade10=3.95 | grade100=39.5 | band=D | entry=0.9235 | sl=0.9215 | tp1=0.926 | tp2=0.928
-3. EURJPY | side=LONG | grade10=3.72 | grade100=37.2 | band=D | entry=177.216 | sl=176.994 | tp1=177.485 | tp2=177.694
-4. GBPUSD | side=SHORT | grade10=3.42 | grade100=34.2 | band=D | entry=1.3289 | sl=1.3303 | tp1=1.3271 | tp2=1.3258
-5. AUDUSD | side=SHORT | grade10=3.31 | grade100=33.1 | band=D | entry=0.6853 | sl=0.6862 | tp1=0.6842 | tp2=0.6834
-6. USDCHF | side=LONG | grade10=3.26 | grade100=32.6 | band=D | entry=0.8313 | sl=0.8304 | tp1=0.8324 | tp2=0.8333
-7. EURGBP | side=LONG | grade10=3.03 | grade100=30.3 | band=D | entry=0.8359 | sl=0.8352 | tp1=0.8367 | tp2=0.8373
-8. USDCAD | side=LONG | grade10=3.0 | grade100=30.0 | band=D | entry=1.4235 | sl=1.4224 | tp1=1.4248 | tp2=1.4258
-9. GBPCAD | side=LONG | grade10=2.6 | grade100=26.0 | band=D | entry=1.8919 | sl=1.8896 | tp1=1.8948 | tp2=1.897
-10. EURAUD | side=LONG | grade10=2.38 | grade100=23.8 | band=E | entry=1.6204 | sl=1.618 | tp1=1.6232 | tp2=1.6254
-11. USDJPY | side=LONG | grade10=2.3 | grade100=23.0 | band=E | entry=159.579 | sl=159.456 | tp1=159.729 | tp2=159.845
-12. GBPJPY | side=LONG | grade10=2.23 | grade100=22.3 | band=E | entry=212.053 | sl=211.887 | tp1=212.254 | tp2=212.411
-13. AUDNZD | side=SHORT | grade10=1.79 | grade100=17.9 | band=E | entry=1.2296 | sl=1.2305 | tp1=1.2284 | tp2=1.2274
-14. AUDCHF | side=SHORT | grade10=1.19 | grade100=11.9 | band=E | entry=0.5701 | sl=0.571 | tp1=0.569 | tp2=0.5681
-15. NZDCAD | side=LONG | grade10=0.6 | grade100=6.0 | band=E | entry=0.7938 | sl=0.7932 | tp1=0.7946 | tp2=0.7952
-16. CADJPY | side=LONG | grade10=0.0 | grade100=0.0 | band=E | entry=112.07 | sl=111.982 | tp1=112.177 | tp2=112.26
+1. EURUSD | side=SHORT | grade10=4.63 | grade100=46.3 | band=C | entry=1.1093 | sl=1.1104 | tp1=1.108 | tp2=1.107
+2. GBPUSD | side=SHORT | grade10=4.51 | grade100=45.1 | band=C | entry=1.328 | sl=1.3295 | tp1=1.3263 | tp2=1.3249
+3. GBPJPY | side=LONG | grade10=4.49 | grade100=44.9 | band=C | entry=212.287 | sl=212.041 | tp1=212.586 | tp2=212.818
+4. AUDUSD | side=SHORT | grade10=4.3 | grade100=43.0 | band=C | entry=0.6852 | sl=0.686 | tp1=0.6841 | tp2=0.6833
+5. EURCHF | side=LONG | grade10=3.79 | grade100=37.9 | band=D | entry=0.924 | sl=0.9219 | tp1=0.9265 | tp2=0.9284
+6. EURAUD | side=LONG | grade10=3.65 | grade100=36.5 | band=D | entry=1.619 | sl=1.6167 | tp1=1.6219 | tp2=1.6241
+7. USDCAD | side=LONG | grade10=3.55 | grade100=35.5 | band=D | entry=1.4245 | sl=1.4234 | tp1=1.4258 | tp2=1.4269
+8. USDCHF | side=LONG | grade10=3.38 | grade100=33.8 | band=D | entry=0.8329 | sl=0.832 | tp1=0.834 | tp2=0.8349
+9. EURGBP | side=LONG | grade10=2.74 | grade100=27.4 | band=D | entry=0.8352 | sl=0.8346 | tp1=0.836 | tp2=0.8366
+10. EURJPY | side=LONG | grade10=2.68 | grade100=26.8 | band=D | entry=177.313 | sl=177.072 | tp1=177.606 | tp2=177.834
+11. USDJPY | side=LONG | grade10=2.54 | grade100=25.4 | band=D | entry=159.846 | sl=159.723 | tp1=159.996 | tp2=160.112
+12. GBPCAD | side=LONG | grade10=2.51 | grade100=25.1 | band=D | entry=1.8918 | sl=1.8894 | tp1=1.8946 | tp2=1.8969
+13. AUDNZD | side=SHORT | grade10=2.33 | grade100=23.3 | band=E | entry=1.2308 | sl=1.2318 | tp1=1.2297 | tp2=1.2287
+14. AUDCHF | side=SHORT | grade10=1.36 | grade100=13.6 | band=E | entry=0.5707 | sl=0.5717 | tp1=0.5696 | tp2=0.5687
+15. CADJPY | side=LONG | grade10=1.33 | grade100=13.3 | band=E | entry=112.203 | sl=112.116 | tp1=112.31 | tp2=112.393
+16. NZDCAD | side=LONG | grade10=1.25 | grade100=12.5 | band=E | entry=0.7929 | sl=0.7923 | tp1=0.7936 | tp2=0.7942
