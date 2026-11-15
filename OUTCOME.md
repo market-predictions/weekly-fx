@@ -1,19 +1,24 @@
-# OUTCOME — weekly-fx (FX-lab)
+# OUTCOME — weekly-fx (wekelijks FX-rapport)
 
-> **CONCEPT (2026-11-15)** — opgesteld door Claude uit de README, de oude missie en de recente runs. De eigenaar bevestigt of past aan; tot dan geldt dit als werkhypothese, niet als besluit.
+> **Doel bevestigd door de eigenaar op 2026-11-15.** De invulling van "klaar als" volgt bij de herbouw (ronde B).
 
-**Doel:** Proefomgeving voor het FX-rapport: nieuwe logica eerst hier draaien en beoordelen voordat ze naar `daily-fx` gaat. Levert zelf niets aan lezers.
+**Doel:** Elke week een correct FX-rapport over een FX-modelportefeuille bij de lezers. Opbouw zoals `weekly-etf-eu`, maar met wat FX eigen maakt (paren in plaats van fondsen, rente en carry, centrale banken, andere lezersbehoefte).
 
 **Klaar als:**
-- De geplande runs (`generate_predictions.yml`, `run-fx-technical-overlay.yml`) slagen.
-- Een wijziging die naar `daily-fx` gaat, is hier eerst gedraaid en het resultaat is bekeken.
+- Het rapport is op de vaste dag vóór het vaste tijdstip verzonden.
+- Elk getal in het rapport komt uit de berekende feiten; de portefeuille-historie sluit op de cent.
+- Eén `acceptance.yml` toetst dit (te bouwen).
 
-**Alleen met akkoord van de eigenaar:** overzetten naar `daily-fx` (productie); verzenden aan wie dan ook.
+**Alleen met akkoord van de eigenaar:** ontvangers en live verzenden; beslisregels en benchmark; startportefeuille.
 
-**Status:** laatste runs van `generate_predictions.yml` en `run-fx-technical-overlay.yml`.
+**Status:** laatste run van de wekelijkse workflow (na herbouw).
 
 ## Open vragen aan de eigenaar
-- Is een apart lab nog nodig, of gaat dit samen met `daily-fx` in één repo met een proefmodus (zoals de rehearsal-modus van weekly-etf-eu)? Voorstel: samenvoegen.
+- Verzenddag en tijdstip?
+- Taal: NL en EN, zoals weekly-etf-eu?
+- Wat is de portefeuille: posities in valutaparen met een basisvaluta (EUR?), en mag er hefboom in?
 
 ## Besluiten
 - 2026-11-15 — Overgestapt op het outcome-first model (control-plane). Oudere plan-, status- en controledocumenten in deze repo zijn niet meer leidend.
+- 2026-11-15 — Eigen product, los van `daily-fx` (dagelijks). Niet samenvoegen.
+- 2026-11-15 — Herbouw volgens het model van `weekly-etf-eu`: vaste pijplijn (data → beslissen → feiten → tekst → rapport → mail), AI rekent nooit, één acceptatietoets.
